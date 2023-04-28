@@ -4,8 +4,8 @@
 [ext_resource type="Script" path="res://scenes/Player.gd" id="1_n0o0d"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qcgqc"]
-radius = 19.0
-height = 82.0
+radius = 17.0
+height = 62.0
 
 [node name="Jeff" type="CharacterBody2D"]
 motion_mode = 1
