@@ -40,7 +40,7 @@ func populate_package_spawn_areas():
 	for loc in locs:
 		var areas := map.get_used_cells_by_id(0, loc.source_id, loc.atlas_pos)
 		for area in areas:
-			package_spawn_areas.append(to_global(map.map_to_local(area)))
+			package_spawn_areas.append(map.map_to_local(area))
 	start_package_spawn_timer()
 
 func start_package_spawn_timer():

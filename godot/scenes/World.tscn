@@ -103,7 +103,6 @@ script = ExtResource("1_oh1tc")
 [node name="GroundTileMap" type="TileMap" parent="."]
 y_sort_enabled = true
 texture_filter = 1
-scale = Vector2(4, 4)
 tile_set = SubResource("TileSet_a2e6e")
 cell_quadrant_size = 8
 format = 2
@@ -112,7 +111,6 @@ layer_0/tile_data = PackedInt32Array(196610, 262145, 0, 262146, 262145, 1, 19661
 [node name="ObjectTileMap" type="TileMap" parent="."]
 y_sort_enabled = true
 texture_filter = 1
-scale = Vector2(4, 4)
 tile_set = SubResource("TileSet_0busg")
 cell_quadrant_size = 8
 format = 2
