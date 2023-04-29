@@ -130,4 +130,7 @@ position = Vector2(584, 241)
 wait_time = 4.0
 autostart = true
 
+[node name="PackageSpawnTimer" type="Timer" parent="."]
+
 [connection signal="timeout" from="UfoTimer" to="." method="_on_ufo_timer_timeout"]
+[connection signal="timeout" from="PackageSpawnTimer" to="." method="_on_package_spawn_timer_timeout"]
