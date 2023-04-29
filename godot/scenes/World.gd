@@ -3,6 +3,7 @@ extends Node2D
 const Package = preload("res://scenes/Package.tscn")
 const Ufo = preload("res://scenes/Ufo.tscn")
 const Destination = preload("res://scenes/Destination.tscn")
+const FatAlien = preload("res://scenes/aliens/FatAlien.tscn")
 
 const PACKAGE_SPAWN_RATE := 6.0
 const PACKAGE_SPAWN_OFFSET := 3.0
@@ -11,6 +12,7 @@ const PACKAGE_SPAWN_OFFSET := 3.0
 
 var package_spawn_areas: Array[Vector2] = []
 var package_destination_areas: Array[Node2D] = []
+var _astar = AStarGrid2D.new()
 
 class TileLocation:
 	var source_id: int
@@ -28,6 +30,23 @@ func _ready():
 		dest.position = pos
 		package_destination_areas.append(dest)
 	start_package_spawn_timer()
+	_init_astar()
+	var alien = FatAlien.instantiate()
+	alien.position = _astar.get_point_position(Vector2i(2, 10))
+	add_child(alien)
+	
+
+func _init_astar():
+	var tm: TileMap = $ObjectTileMap
+	_astar.size = tm.get_used_rect().end
+	_astar.cell_size = tm.tile_set.tile_size
+	_astar.update()
+	for cell in tm.get_used_cells(0):
+		print("cell: ", cell)
+		_astar.set_point_solid(cell, true)
+
+func vector_to_grid(v: Vector2):
+	return (v/_astar.cell_size).floor()
 
 func get_areas(layer_name: String) -> Array[TileLocation]:
 	var ts: TileSet = $ObjectTileMap.tile_set
