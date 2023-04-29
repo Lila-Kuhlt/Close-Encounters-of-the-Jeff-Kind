@@ -13,6 +13,7 @@ var missed_packages := 0
 func collect_package(package) -> bool:
 	if package_queue.size() < MAX_QUEUE_SIZE:
 		package_queue.append(package)
+		package.pick_up()
 		return true
 	else:
 		return false

@@ -5,9 +5,6 @@ const Globals = preload("res://src/Globals.gd")
 
 var direction: Vector2
 
-func _ready() -> void:
-	pass
-
 func _physics_process(delta: float) -> void:
 	velocity = direction * SPEED
 	position += velocity * delta
