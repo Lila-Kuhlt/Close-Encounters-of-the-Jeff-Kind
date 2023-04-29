@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=3 uid="uid://bbquwrshbt744"]
 
-[ext_resource type="Texture2D" uid="uid://dtljv0yknrayy" path="res://assets/ground-tileset.png" id="1_mf6op"]
+[ext_resource type="Texture2D" path="res://assets/ground-tileset.png" id="1_mf6op"]
 [ext_resource type="Script" path="res://scenes/World.gd" id="1_oh1tc"]
 [ext_resource type="PackedScene" uid="uid://c7xru3o3piygv" path="res://scenes/Player.tscn" id="1_q82cg"]
-[ext_resource type="Texture2D" uid="uid://ch7b2bs8cd3ki" path="res://assets/object-tileset.png" id="2_faexy"]
+[ext_resource type="Texture2D" path="res://assets/object-tileset.png" id="2_faexy"]
 [ext_resource type="PackedScene" path="res://scenes/Alien.tscn" id="5_qx0gr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_me0c7"]
@@ -119,3 +119,7 @@ position = Vector2(36, 58)
 
 [node name="Alien" parent="." instance=ExtResource("5_qx0gr")]
 position = Vector2(584, 241)
+
+[node name="UfoTimer" type="Timer" parent="."]
+wait_time = 4.0
+autostart = true
