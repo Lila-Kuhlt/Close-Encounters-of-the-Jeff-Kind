@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1as0gdst78bv"]
+
+[ext_resource type="Texture2D" uid="uid://dxxc4ld0u1jpv" path="res://assets/alien.png" id="1_6kscr"]
+
+[node name="Alien" type="Node2D"]
+scale = Vector2(4, 4)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_6kscr")
