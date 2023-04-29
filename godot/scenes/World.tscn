@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://bbquwrshbt744"]
+[gd_scene load_steps=10 format=3 uid="uid://bbquwrshbt744"]
 
 [ext_resource type="Texture2D" uid="uid://dtljv0yknrayy" path="res://assets/ground-tileset.png" id="1_mf6op"]
+[ext_resource type="Script" path="res://scenes/World.gd" id="1_oh1tc"]
 [ext_resource type="PackedScene" uid="uid://c7xru3o3piygv" path="res://scenes/Player.tscn" id="1_q82cg"]
 [ext_resource type="Texture2D" uid="uid://ch7b2bs8cd3ki" path="res://assets/object-tileset.png" id="2_faexy"]
 [ext_resource type="PackedScene" path="res://scenes/Alien.tscn" id="5_qx0gr"]
@@ -92,6 +93,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_et7kk")
 
 [node name="World" type="Node2D"]
+script = ExtResource("1_oh1tc")
 
 [node name="GroundTileMap" type="TileMap" parent="."]
 y_sort_enabled = true
