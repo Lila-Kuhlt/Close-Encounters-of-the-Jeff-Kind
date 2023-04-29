@@ -10,9 +10,8 @@ var package_queue := []
 var missed_packages := 0
 
 ## Tries to add a package to the queue and returns wether the package could be added.
-func add_package(package) -> bool:
+func collect_package(package) -> bool:
 	if package_queue.size() < MAX_QUEUE_SIZE:
-		package.start_timer(2.0, _on_package_timeout.bind(package))
 		package_queue.append(package)
 		return true
 	else:
