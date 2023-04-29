@@ -35,10 +35,8 @@ func _process(delta):
 func rand_edge_point() -> Vector2:
 	var edge: int = randi_range(0,3)
 	var viewport_size := get_viewport_rect().size
-	var rand = randf_range(0,1)
-	var coord: Vector2
-	coord.x = rand * viewport_size.x
-	coord.y = rand * viewport_size.y
+	var rand := randf_range(0,1)
+	var coord := rand * viewport_size
 
 	if edge == 0:
 		coord.x = -MARGIN.x
@@ -51,7 +49,7 @@ func rand_edge_point() -> Vector2:
 
 	return coord
 
-static func mirror_point(point: Vector2, center: Vector2) -> Vector2:
+func mirror_point(point: Vector2, center: Vector2) -> Vector2:
 	return 2 * center - point
 
 func _on_timer_timeout():

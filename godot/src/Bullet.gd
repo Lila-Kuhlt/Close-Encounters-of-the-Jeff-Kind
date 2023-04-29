@@ -15,5 +15,5 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 
 
-func _on_hit_box_area_entered(area):
+func _on_hit_box_area_entered(_area):
 	queue_free()
