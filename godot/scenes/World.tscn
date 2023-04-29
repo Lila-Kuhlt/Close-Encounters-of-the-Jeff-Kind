@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://bkxrlf0524qe0"]
+[gd_scene load_steps=12 format=3 uid="uid://bkxrlf0524qe0"]
 
 [ext_resource type="Texture2D" uid="uid://dtljv0yknrayy" path="res://assets/ground-tileset.png" id="1_mf6op"]
 [ext_resource type="Script" path="res://scenes/World.gd" id="1_oh1tc"]
 [ext_resource type="PackedScene" uid="uid://c7xru3o3piygv" path="res://scenes/Player.tscn" id="1_q82cg"]
 [ext_resource type="Texture2D" uid="uid://ch7b2bs8cd3ki" path="res://assets/object-tileset.png" id="2_faexy"]
 [ext_resource type="Texture2D" uid="uid://b46feogejdc57" path="res://assets/building-tileset.png" id="2_gcg03"]
+[ext_resource type="PackedScene" uid="uid://bqwg30od0fmhk" path="res://scenes/UI/UI.tscn" id="6_th27r"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_me0c7"]
 resource_name = "ground1"
@@ -128,6 +129,8 @@ wait_time = 4.0
 autostart = true
 
 [node name="PackageSpawnTimer" type="Timer" parent="."]
+
+[node name="UI" parent="." instance=ExtResource("6_th27r")]
 
 [connection signal="timeout" from="UfoTimer" to="." method="_on_ufo_timer_timeout"]
 [connection signal="timeout" from="PackageSpawnTimer" to="." method="_on_package_spawn_timer_timeout"]
