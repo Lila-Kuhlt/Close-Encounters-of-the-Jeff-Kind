@@ -1,0 +1,12 @@
+Stadt
+
+Die Stadt soll angegriffen aussehen. Also teilweise zerstört sein.
+Dabei müssen für das Spiel bestimmte Breiche existieren.
+
+	Große Flächen, die als Räume dienen können. Genug Platz zum Ausweichen.
+	Kleine Verengungen, durch die man hin und wieder nutzen kann. Man kann sie nicht mehr gut nutzen, sobald nur ein Alien darin ist. Lange dünne Durchgänge sollten vermieden werden.
+	Hindernisse in den großen Flächen, um die man rumspielen muss. (Autos, Löcher, umgefallene Häuser)
+	Zulieferungspunkte (Objekte zu denen man immer wieder muss. Sollten frei genug sein, sodass sich keine Aliens stacken)
+	Ineraktive/Variabel Objekte. Optional, sollte erst darüber nachgedacht werden, wenn das Spiel soweit läuft
+
+
