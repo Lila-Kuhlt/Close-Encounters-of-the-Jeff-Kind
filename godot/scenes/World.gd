@@ -12,9 +12,9 @@ class TileLocation:
 	var source_id: int
 	var atlas_pos: Vector2i
 	
-	func _init(source_id: int, atlas_pos: Vector2i):
-		self.source_id = source_id
-		self.atlas_pos = atlas_pos
+	func _init(my_source_id: int, my_atlas_pos: Vector2i):
+		self.source_id = my_source_id
+		self.atlas_pos = my_atlas_pos
 
 func get_spawnable_areas() -> Array[TileLocation]:
 	var ts: TileSet = $ObjectTileMap.tile_set
@@ -22,14 +22,11 @@ func get_spawnable_areas() -> Array[TileLocation]:
 	for ix in range(ts.get_source_count()):
 		var sid := ts.get_source_id(ix)
 		var source: TileSetAtlasSource = ts.get_source(sid)
-		var gridsz: Vector2i = source.get_atlas_grid_size()
-		for y in range(gridsz.y):
-			for x in range(gridsz.x):
-				var data = source.get_tile_data(Vector2i(x, y), 0)
-				if data == null:
-					continue
-				if data.get_custom_data('canPackagesSpawn'):
-					tile_locs.append(TileLocation.new(sid, Vector2i(x, y)))
+		for tix in range(source.get_tiles_count()):
+			var xy := source.get_tile_id(tix)
+			var data = source.get_tile_data(xy, 0)
+			if data.get_custom_data('canPackagesSpawn'):
+				tile_locs.append(TileLocation.new(sid, xy))
 	return tile_locs
 
 func _ready():
