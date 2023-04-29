@@ -1,18 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://c6jdmb3t0ocsp"]
+[gd_scene load_steps=4 format=3 uid="uid://cxh6sj83bun4n"]
 
 [ext_resource type="Texture2D" uid="uid://dxxc4ld0u1jpv" path="res://assets/alien.png" id="1_6kscr"]
-[ext_resource type="Script" path="res://src/Alien.gd" id="1_man3h"]
+[ext_resource type="Script" path="res://scenes/aliens/Fat.Alien.gd" id="1_s5hk0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kqs4j"]
 radius = 4.0
 height = 19.5
 
-[node name="Alien" type="CharacterBody2D"]
+[node name="FixedAlien" type="CharacterBody2D"]
 scale = Vector2(4, 4)
 collision_layer = 2
 collision_mask = 6
 motion_mode = 1
-script = ExtResource("1_man3h")
+script = ExtResource("1_s5hk0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -22,6 +22,7 @@ texture = ExtResource("1_6kscr")
 shape = SubResource("CapsuleShape2D_kqs4j")
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 0.25
 autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
