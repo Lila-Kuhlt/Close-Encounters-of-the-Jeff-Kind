@@ -1,26 +1,30 @@
-[gd_scene load_steps=4 format=3 uid="uid://djnr5dw6bkofr"]
+[gd_scene load_steps=4 format=3 uid="uid://cw0uireexe16e"]
 
-[ext_resource type="Texture2D" uid="uid://b88pju7qnrusy" path="res://assets/small-bullet.png" id="1_fhtbt"]
-[ext_resource type="Script" path="res://src/Bullet.gd" id="1_pr2ph"]
+[ext_resource type="Script" path="res://src/Bullet.gd" id="1_xmb74"]
+[ext_resource type="Texture2D" uid="uid://b88pju7qnrusy" path="res://assets/small-bullet.png" id="2_7qw12"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_27k2f"]
 radius = 2.0
 
-[node name="Bullet" type="CharacterBody2D"]
+[node name="PointBullet" type="CharacterBody2D"]
 scale = Vector2(4, 4)
+collision_layer = 0
+collision_mask = 0
 motion_mode = 1
-script = ExtResource("1_pr2ph")
+script = ExtResource("1_xmb74")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_27k2f")
+disabled = true
 one_way_collision_margin = 0.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("1_fhtbt")
+texture = ExtResource("2_7qw12")
 
 [node name="HitBox" type="Area2D" parent="."]
 collision_layer = 0
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 shape = SubResource("CircleShape2D_27k2f")

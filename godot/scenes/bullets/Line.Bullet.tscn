@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://mvael8q3ndam"]
+
+[ext_resource type="Script" path="res://src/Bullet.gd" id="1_b6cnu"]
+[ext_resource type="Texture2D" uid="uid://v7pam6m8lsyg" path="res://assets/line-bullet.png" id="2_8is42"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jqw1y"]
+size = Vector2(13.5, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p7t5m"]
+size = Vector2(14, 4.5)
+
+[node name="Bullet" type="CharacterBody2D"]
+scale = Vector2(4, 4)
+collision_layer = 0
+collision_mask = 4
+motion_mode = 1
+script = ExtResource("1_b6cnu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.02, 0.034)
+texture = ExtResource("2_8is42")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_jqw1y")
+disabled = true
+one_way_collision_margin = 0.0
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("RectangleShape2D_p7t5m")
+one_way_collision_margin = 0.0
+
+[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
