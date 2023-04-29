@@ -5,24 +5,28 @@ const Bullet = preload("res://scenes/Bullet.tscn")
 
 const SPEED: float = 300.0
 const MAX_QUEUE_SIZE: int = 5
+
 var package_queue := []
+var missed_packages := 0
 
 ## Tries to add a package to the queue and returns wether the package could be added.
-func add_package() -> bool:
+func add_package(package) -> bool:
 	if package_queue.size() < MAX_QUEUE_SIZE:
-		var package = Package.instantiate()
-		add_child(package)
 		package.start_timer(2.0, _on_package_timeout.bind(package))
 		package_queue.append(package)
-		print("added package")
 		return true
 	else:
 		return false
 
+## Removes a package from the queue and removes the node.
+func remove_package(package):
+	package_queue.erase(package)
+	package.queue_free()
+
 ## This function is called when a package timer reaches 0.
 func _on_package_timeout(package):
-	print("dropped package")
-	package_queue.erase(package)
+	remove_package(package)
+	missed_packages += 1
 
 func _physics_process(_delta):
 	var direction := Input.get_vector("left", "right", "up", "down")
