@@ -1,18 +1,22 @@
-extends Area2D
+extends CharacterBody2D
 
 const Globals = preload("res://src/Globals.gd")
+@export var SPEED = 20
 
-var vel: Vector2
+var direction: Vector2
 
 func _ready() -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
-	position += vel * delta
+	velocity = direction * SPEED
+	position += velocity * delta
 	if (position.x > Globals.LOWER_RIGHT.x or position.y > Globals.LOWER_RIGHT.y
 			or position.x < Globals.UPPER_LEFT.x or position.y < Globals.UPPER_LEFT.y):
 		queue_free()
-		return
-	if has_overlapping_bodies():
-		queue_free()
-		return
+	else:
+		move_and_slide()
+
+
+func _on_hit_box_area_entered(area):
+	queue_free()
