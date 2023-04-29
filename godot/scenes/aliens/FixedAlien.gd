@@ -1,14 +1,12 @@
 extends CharacterBody2D
-const bullet_scene = preload("res://scenes/bullets/Line.Bullet.tscn")
-var bullet
-var bullet2
 
-var x = 0
-var angle = 0
+const Bullet = preload("res://scenes/bullets/Line.Bullet.tscn")
+
+var x := 0.0
 
 func _on_timer_timeout():
-	bullet = bullet_scene.instantiate()
-	bullet2 = bullet_scene.instantiate()
+	var bullet = Bullet.instantiate()
+	var bullet2 = Bullet.instantiate()
 	bullet.direction = Vector2(sin(x), cos(x))
 	bullet2.direction = Vector2(-sin(x), -cos(x))
 	bullet.rotate(atan2(bullet.direction.y, bullet.direction.x) - PI/2)
