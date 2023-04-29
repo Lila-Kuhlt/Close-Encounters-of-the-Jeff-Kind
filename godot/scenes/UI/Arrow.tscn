@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://d4a3qt18fwqnv"]
+
+[ext_resource type="Texture2D" uid="uid://cyr5bqany6524" path="res://assets/arrow.png" id="1_uuu2c"]
+
+[node name="Arrow" type="TextureRect"]
+texture_filter = 1
+texture = ExtResource("1_uuu2c")

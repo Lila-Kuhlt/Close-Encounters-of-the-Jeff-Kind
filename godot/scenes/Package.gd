@@ -1,6 +1,6 @@
 extends Node2D
 
-var destination: Vector2i
+var destination: Node2D
 
 ## Starts the timer with `time_sec` seconds and connects the callback to the `timeout` signal.
 func start_timer(time_sec: float, callback: Callable):
@@ -8,7 +8,7 @@ func start_timer(time_sec: float, callback: Callable):
 
 func pick_up():
 	visible = false
-	$Area2D.set_deferred("monitoring", false)
+	$PlayerDetector.set_deferred("monitoring", false)
 
-func _on_area_2d_body_entered(player):
+func _on_player_detected(player):
 	player.collect_package(self)

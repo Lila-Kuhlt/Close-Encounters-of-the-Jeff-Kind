@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://n2irus8kabqp" path="res://assets/package.png" id="2_f8cij"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kccmo"]
-radius = 8.0
 
 [node name="Package" type="Node2D"]
 script = ExtResource("1_jukrg")
@@ -13,12 +12,12 @@ script = ExtResource("1_jukrg")
 texture_filter = 1
 texture = ExtResource("2_f8cij")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="PlayerDetector" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 4
 monitorable = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
 shape = SubResource("CircleShape2D_kccmo")
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detected"]

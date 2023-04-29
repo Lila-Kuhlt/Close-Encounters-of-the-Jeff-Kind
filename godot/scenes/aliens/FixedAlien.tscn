@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bl5rjtsp02jnk"]
+
+[ext_resource type="PackedScene" uid="uid://528481gmre0a" path="res://scenes/aliens/Alien.tscn" id="1_k5mbq"]
+[ext_resource type="Script" path="res://scenes/aliens/FixedAlien.gd" id="2_nqj1p"]
+
+[node name="FixedAlien" instance=ExtResource("1_k5mbq")]
+script = ExtResource("2_nqj1p")
+
+[node name="Timer" parent="." index="2"]
+wait_time = 2.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
