@@ -7,7 +7,7 @@ const Destination = preload("res://scenes/Destination.tscn")
 const PACKAGE_SPAWN_RATE := 6.0
 const PACKAGE_SPAWN_OFFSET := 3.0
 
-@export var ufo_spawn_chance = 0.5
+@export var ufo_spawn_chance = 1.0
 
 var package_spawn_areas: Array[Vector2] = []
 var package_destination_areas: Array[Node2D] = []
