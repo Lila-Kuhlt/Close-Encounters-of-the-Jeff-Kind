@@ -25,8 +25,19 @@ func remove_package(package):
 
 ## This function is called when a package timer reaches 0.
 func _on_package_timeout(package):
-	remove_package(package)
-	missed_packages += 1
+	# check if package was already delivered
+	if package != null:
+		remove_package(package)
+		missed_packages += 1
+
+func _on_destination_detector_area_entered(area):
+	var dest = area.get_parent()
+	var packages_to_be_removed := []
+	for package in package_queue:
+		if package.destination == dest:
+			packages_to_be_removed.append(package)
+	for package in packages_to_be_removed:
+		remove_package(package)
 
 func _physics_process(_delta):
 	var direction := Input.get_vector("left", "right", "up", "down")

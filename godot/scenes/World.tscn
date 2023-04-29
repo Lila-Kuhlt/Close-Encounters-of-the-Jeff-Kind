@@ -88,12 +88,15 @@ texture = ExtResource("2_gcg03")
 2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 2:0/0/physics_layer_0/angular_velocity = 0.0
 2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3, 4, -3, -11, 11, -11, 11, 4)
+2:0/0/custom_data_1 = true
 
 [sub_resource type="TileSet" id="TileSet_0busg"]
 tile_size = Vector2i(8, 8)
 physics_layer_0/collision_layer = 1
 custom_data_layer_0/name = "canPackagesSpawn"
 custom_data_layer_0/type = 1
+custom_data_layer_1/name = "canBeDestination"
+custom_data_layer_1/type = 1
 sources/0 = SubResource("TileSetAtlasSource_et7kk")
 sources/2 = SubResource("TileSetAtlasSource_kkigg")
 

@@ -2,13 +2,15 @@ extends Node2D
 
 const Package = preload("res://scenes/Package.tscn")
 const Ufo = preload("res://scenes/Ufo.tscn")
+const Destination = preload("res://scenes/Destination.tscn")
 
 const PACKAGE_SPAWN_RATE := 6.0
 const PACKAGE_SPAWN_OFFSET := 3.0
 
 @export var ufo_spawn_chance = 0.5
 
-var package_spawn_areas := []
+var package_spawn_areas: Array[Vector2] = []
+var package_destination_areas: Array[Node2D] = []
 
 class TileLocation:
 	var source_id: int
@@ -18,7 +20,16 @@ class TileLocation:
 		self.source_id = my_source_id
 		self.atlas_pos = my_atlas_pos
 
-func get_spawnable_areas() -> Array[TileLocation]:
+func _ready():
+	package_spawn_areas = populate_areas("canPackagesSpawn")
+	for pos in populate_areas("canBeDestination"):
+		var dest := Destination.instantiate()
+		add_child(dest)
+		dest.position = pos
+		package_destination_areas.append(dest)
+	start_package_spawn_timer()
+
+func get_areas(layer_name: String) -> Array[TileLocation]:
 	var ts: TileSet = $ObjectTileMap.tile_set
 	var tile_locs: Array[TileLocation] = []
 	for ix in range(ts.get_source_count()):
@@ -27,31 +38,36 @@ func get_spawnable_areas() -> Array[TileLocation]:
 		for tix in range(source.get_tiles_count()):
 			var xy := source.get_tile_id(tix)
 			var data = source.get_tile_data(xy, 0)
-			if data.get_custom_data('canPackagesSpawn'):
+			if data.get_custom_data(layer_name):
 				tile_locs.append(TileLocation.new(sid, xy))
 	return tile_locs
 
-func _ready():
-	populate_package_spawn_areas()
-
-func populate_package_spawn_areas():
+func populate_areas(layer_name: String):
 	var map: TileMap = get_node('ObjectTileMap')
-	var locs := get_spawnable_areas()
+	var locs := get_areas(layer_name)
+	var areas: Array[Vector2] = []
 	for loc in locs:
-		var areas := map.get_used_cells_by_id(0, loc.source_id, loc.atlas_pos)
-		for area in areas:
-			package_spawn_areas.append(map.map_to_local(area))
-	start_package_spawn_timer()
+		for area in map.get_used_cells_by_id(0, loc.source_id, loc.atlas_pos):
+			areas.append(map.map_to_local(area))
+	return areas
 
 func start_package_spawn_timer():
 	var time := randf_range(PACKAGE_SPAWN_RATE - PACKAGE_SPAWN_OFFSET, PACKAGE_SPAWN_RATE + PACKAGE_SPAWN_OFFSET)
 	$PackageSpawnTimer.start(time)
 
 func spawn_package():
+	# create a new package
 	var package: Node2D = Package.instantiate()
 	add_child(package)
-	var idx := randi_range(0, len(package_spawn_areas) - 1)
-	package.position = package_spawn_areas[idx]
+
+	# select spawn position
+	var spawn_idx := randi_range(0, len(package_spawn_areas) - 1)
+	package.position = package_spawn_areas[spawn_idx]
+
+	# select destination
+	var dest_idx := randi_range(0, len(package_destination_areas) - 1)
+	package.destination = package_destination_areas[dest_idx]
+
 	package.start_timer(20.0, $Jeff._on_package_timeout.bind(package))
 	return package
 
