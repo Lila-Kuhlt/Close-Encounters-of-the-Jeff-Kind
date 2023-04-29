@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbquwrshbt744"]
+
+[ext_resource type="PackedScene" uid="uid://c7xru3o3piygv" path="res://scenes/Player.tscn" id="1_q82cg"]
+[ext_resource type="PackedScene" path="res://scenes/Block.tscn" id="2_q7lky"]
+
+[node name="World" type="Node2D"]
+
+[node name="Jeff" parent="." instance=ExtResource("1_q82cg")]
+position = Vector2(36, 58)
+
+[node name="Block" parent="." instance=ExtResource("2_q7lky")]
+position = Vector2(417, 85)
+
+[node name="Block2" parent="." instance=ExtResource("2_q7lky")]
+position = Vector2(249, 222)
