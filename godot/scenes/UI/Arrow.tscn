@@ -1,7 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://d4a3qt18fwqnv"]
+[gd_scene load_steps=3 format=3 uid="uid://d4a3qt18fwqnv"]
 
 [ext_resource type="Texture2D" uid="uid://cyr5bqany6524" path="res://assets/arrow.png" id="1_uuu2c"]
+[ext_resource type="Script" path="res://scenes/UI/Arrow.gd" id="2_bm4v0"]
 
-[node name="Arrow" type="TextureRect"]
+[node name="Arrow" type="CanvasLayer"]
+script = ExtResource("2_bm4v0")
+
+[node name="Texture" type="TextureRect" parent="."]
 texture_filter = 1
+offset_right = 40.0
+offset_bottom = 40.0
 texture = ExtResource("1_uuu2c")
+stretch_mode = 2
