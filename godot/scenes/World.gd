@@ -1,8 +1,11 @@
 extends Node2D
 
 const Package = preload("res://scenes/Package.tscn")
+const Ufo = preload("res://scenes/Ufo.tscn")
 
 const PACKAGE_SPAWN_AREA_ATLAS_COORDS := Vector2i(2, 2)
+
+@export var ufo_spawn_chance = 0.5
 
 var rng := RandomNumberGenerator.new()
 var package_spawn_areas := []
@@ -23,3 +26,10 @@ func build_package():
 	package.position = package_spawn_areas[idx]
 	package.start_timer(2.0, $Player._on_package_timeout.bind(package))
 	return package
+
+
+func _on_ufo_timer_timeout():
+	if randf_range(0,1) > ufo_spawn_chance:
+		return
+	
+	add_child(Ufo.instantiate())

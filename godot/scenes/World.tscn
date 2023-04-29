@@ -123,3 +123,5 @@ position = Vector2(584, 241)
 [node name="UfoTimer" type="Timer" parent="."]
 wait_time = 4.0
 autostart = true
+
+[connection signal="timeout" from="UfoTimer" to="." method="_on_ufo_timer_timeout"]
