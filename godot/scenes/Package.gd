@@ -3,8 +3,8 @@ extends Node2D
 const Arrow = preload("res://scenes/UI/Arrow.tscn")
 
 var destination: Node2D
-var arrow;
-var blue_arrow = null;
+var arrow
+var blue_arrow
 
 ## Starts the timer with `time_sec` seconds and connects the callback to the `timeout` signal.
 func start_timer(time_sec: float, callback: Callable):

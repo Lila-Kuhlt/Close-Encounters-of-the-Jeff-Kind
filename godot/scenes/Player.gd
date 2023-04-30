@@ -9,6 +9,7 @@ const MAX_LIFES: int = 3
 
 var package_queue := []
 var lifes := MAX_LIFES
+var packages_delivered := 0
 
 func _ready():
 	get_parent().get_node("UI").set_max_health(MAX_LIFES)
@@ -34,17 +35,18 @@ func _on_package_timeout(package):
 		remove_package(package)
 		lifes = max(lifes - 1, 0)
 		if lifes == 0:
-			get_parent().get_node("UI").trigger_game_over()
+			get_parent().get_node("UI").trigger_game_over(packages_delivered)
 		get_parent().get_node("UI").set_health(lifes)
 
 func _on_destination_detector_area_entered(area):
 	var dest = area.get_parent()
-	var packages_to_be_removed := []
+	var delivered_packages := []
 	for package in package_queue:
 		if package.destination == dest:
-			packages_to_be_removed.append(package)
-	for package in packages_to_be_removed:
+			delivered_packages.append(package)
+	for package in delivered_packages:
 		remove_package(package)
+		packages_delivered += 1
 
 func _physics_process(_delta):
 	var direction := Input.get_vector("left", "right", "up", "down")
@@ -52,8 +54,8 @@ func _physics_process(_delta):
 		$Character.scale = Vector2i(-1, 1)
 	elif direction.x < 0:
 		$Character.scale = Vector2i(1, 1)
-	
+
 	velocity = direction * SPEED
 	move_and_slide()
-	
+
 	get_parent().get_node('Camera').position = position

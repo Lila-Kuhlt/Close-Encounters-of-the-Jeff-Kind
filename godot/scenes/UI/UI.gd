@@ -21,8 +21,10 @@ func _on_button_pressed() -> void:
 	get_tree().paused = false
 	$PauseMenu.hide()
 
-func trigger_game_over() -> void:
+func trigger_game_over(score: int) -> void:
 	get_tree().paused = true
+	var game_over_label = $GameOver/Panel/MarginContainer/VBoxContainer/Label
+	game_over_label.text = game_over_label.text.format({"score": score})
 	$GameOver.show()
 
 func set_max_health(health: int) -> void:
