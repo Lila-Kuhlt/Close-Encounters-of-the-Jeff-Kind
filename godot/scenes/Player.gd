@@ -56,6 +56,7 @@ func _on_destination_detector_area_entered(area):
 		packages_delivered += 1
 
 func _physics_process(_delta):
+	position = position.clamp(Globals.WORLD_BOUNDARY.position, Globals.WORLD_BOUNDARY.end)
 	var direction := Input.get_vector("left", "right", "up", "down")
 	if is_stunned and not Globals.DEBUG:
 		direction = Vector2(0, 0)
