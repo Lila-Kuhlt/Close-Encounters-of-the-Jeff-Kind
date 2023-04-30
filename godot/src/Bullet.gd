@@ -16,4 +16,5 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_hit_box_area_entered(_area):
+	get_parent().get_node("Jeff").hit_player()
 	queue_free()
