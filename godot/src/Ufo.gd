@@ -5,7 +5,7 @@ const SPEED: float = 100
 const BULLET_SPEED: float = 1
 const MAX_TRAVEL_TIME := 1000
 
-const Bullet = preload("res://scenes/bullets/Point.Bullet.tscn")
+const Bullet = preload("res://scenes/bullets/PointBullet.tscn")
 
 var direction: Vector2
 var travel_time := 0

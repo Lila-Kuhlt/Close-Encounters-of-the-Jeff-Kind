@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0pfot8ar77fj"]
+
+[ext_resource type="Script" path="res://scenes/bullets/Bullet.gd" id="1_t4j4e"]
+
+[node name="Bullet" type="CharacterBody2D"]
+script = ExtResource("1_t4j4e")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="PlayerHit" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHit"]
+
+[node name="BuildingCollision" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BuildingCollision"]
+
+[connection signal="body_entered" from="PlayerHit" to="." method="_on_player_hit"]
+[connection signal="body_entered" from="BuildingCollision" to="." method="_on_building_collision"]

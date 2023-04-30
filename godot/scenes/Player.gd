@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 const Package = preload("res://scenes/Package.tscn")
-const Bullet = preload("res://scenes/bullets/Point.Bullet.tscn")
+const Bullet = preload("res://scenes/bullets/PointBullet.tscn")
 
 const SPEED: float = 80.0
 const MAX_QUEUE_SIZE: int = 5

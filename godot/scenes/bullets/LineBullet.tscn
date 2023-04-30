@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bks58sgcw3hk5"]
+
+[ext_resource type="PackedScene" uid="uid://b0pfot8ar77fj" path="res://scenes/bullets/Bullet.tscn" id="1_0reua"]
+[ext_resource type="Texture2D" uid="uid://v7pam6m8lsyg" path="res://assets/line-bullet.png" id="2_71mst"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2v1jf"]
+size = Vector2(14, 4.5)
+
+[node name="LineBullet" instance=ExtResource("1_0reua")]
+
+[node name="Sprite2D" parent="." index="0"]
+scale = Vector2(0.02, 0.032)
+texture = ExtResource("2_71mst")
+
+[node name="CollisionShape2D" parent="PlayerHit" index="0"]
+shape = SubResource("RectangleShape2D_2v1jf")
+
+[node name="CollisionShape2D" parent="BuildingCollision" index="0"]
+shape = SubResource("RectangleShape2D_2v1jf")
