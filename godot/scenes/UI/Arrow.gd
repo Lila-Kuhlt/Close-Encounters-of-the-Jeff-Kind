@@ -2,6 +2,8 @@ extends CanvasLayer
 
 var destination: Node2D
 
+const DESTINATION_MARGIN := 13
+
 func translate_to_inner(pos: Vector2, rect: Rect2) -> Vector2:
 	var c := rect.get_center()
 	var ctop := pos - c
@@ -32,11 +34,15 @@ func _process(_delta: float) -> void:
 	var rect := get_viewport().get_visible_rect()
 	rect.size -= Vector2(8, 8)
 	var pos: Vector2 = destination.get_canvas_transform() * (destination.position - 0.5 * $Texture.size)
+	var dir := (pos - rect.get_center()).normalized()
+	
 	if not rect.has_point(pos):
 		pos = translate_to_inner(pos, rect)
-
+	else:
+		pos -= DESTINATION_MARGIN * dir
+		
 	$Texture.position = pos
-	$Texture.rotation = Vector2(0, -1).angle_to(pos - rect.get_center())
+	$Texture.rotation = Vector2(0, -1).angle_to(dir)
 
 	$TimeLabel.position = pos - Vector2(0, $Texture.size.y * 1.2)
 	if $TimeLabel.position.x + $TimeLabel.size.x > rect.end.x - $Texture.size.x:
