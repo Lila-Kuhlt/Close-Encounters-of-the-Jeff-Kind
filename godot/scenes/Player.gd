@@ -3,7 +3,7 @@ extends CharacterBody2D
 const Package = preload("res://scenes/Package.tscn")
 const Bullet = preload("res://scenes/bullets/PointBullet.tscn")
 
-const SPEED: float = 90.0 if Globals.DEBUG else 90.0
+const SPEED: float = 120.0 if Globals.DEBUG else 90.0
 const MAX_QUEUE_SIZE: int = 5
 const MAX_LIFES: int = 20 if Globals.DEBUG else 3
 const KNOCKBACK_STRENGTH: float = 2
