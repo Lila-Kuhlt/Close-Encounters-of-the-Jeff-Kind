@@ -50,6 +50,7 @@ func _ready():
 		var dest := Destination.instantiate()
 		add_child(dest)
 		dest.position = pos
+		dest.collectible = Globals.get_random_collectible() # TODO this should be decided by another custom data layer
 		package_destination_areas.append(dest)
 	start_package_spawn_timer()
 	populate_walkable_street_tiles()
@@ -105,7 +106,8 @@ func spawn_package():
 	$UI.add_child(arrow)
 	package.blue_arrow = arrow
 
-	package.start_timer(20.0, Globals.Collectible.WEAPON, $Jeff._on_package_timeout.bind(package))
+	package.collectible = Globals.get_random_collectible()
+	package.start_timer(20.0, $Jeff._on_package_timeout.bind(package))
 	return package
 
 func _on_package_spawn_timer_timeout():

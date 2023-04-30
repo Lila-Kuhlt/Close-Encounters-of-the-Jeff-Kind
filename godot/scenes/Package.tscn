@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/Package.gd" id="1_jukrg"]
 [ext_resource type="Texture2D" uid="uid://n2irus8kabqp" path="res://assets/package.png" id="2_f8cij"]
-[ext_resource type="Texture2D" uid="uid://cif408mrbg4gc" path="res://assets/collectables.png" id="3_jmste"]
+[ext_resource type="PackedScene" uid="uid://bbe0ntrbi02ne" path="res://scenes/IconCollectible.tscn" id="3_xgt0x"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kccmo"]
 radius = 8.0
@@ -89,12 +89,8 @@ texture = ExtResource("2_f8cij")
 offset = Vector2(0, -6)
 hframes = 4
 
-[node name="SpriteCollectible" type="Sprite2D" parent="."]
-texture_filter = 1
-position = Vector2(0, 1)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_jmste")
-hframes = 3
+[node name="IconCollectible" parent="SpritePackage" instance=ExtResource("3_xgt0x")]
+position = Vector2(0, -2)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
