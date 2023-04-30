@@ -203,5 +203,11 @@ position = Vector2(347, 222)
 [node name="Alien" parent="." instance=ExtResource("10_rhged")]
 position = Vector2(667, 738)
 
+[node name="Boundary" type="Control" parent="." groups=["Boundary"]]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1252.0
+offset_bottom = 1227.0
+
 [connection signal="timeout" from="UfoTimer" to="." method="_on_ufo_timer_timeout"]
 [connection signal="timeout" from="PackageSpawnTimer" to="." method="_on_package_spawn_timer_timeout"]

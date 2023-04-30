@@ -56,6 +56,7 @@ func _on_destination_detector_area_entered(area):
 		packages_delivered += 1
 
 func _physics_process(_delta):
+	position = position.clamp(Globals.WORLD_BOUNDARY.position, Globals.WORLD_BOUNDARY.end)
 	var direction := Input.get_vector("left", "right", "up", "down")
 	if is_stunned and not Globals.DEBUG:
 		direction = Vector2(0, 0)
@@ -71,15 +72,7 @@ func _physics_process(_delta):
 
 	var vp := get_viewport_rect()
 	var hz := vp.size * 0.5
-	cam.position = position
-	if cam.position.x - hz.x < Globals.UPPER_LEFT.x:
-		cam.position.x = Globals.UPPER_LEFT.x + hz.x
-	if cam.position.y - hz.y < Globals.UPPER_LEFT.y:
-		cam.position.y = Globals.UPPER_LEFT.y + hz.y
-	if cam.position.x + hz.x > Globals.LOWER_RIGHT.x:
-		cam.position.x = Globals.LOWER_RIGHT.x - hz.x
-	if cam.position.y + hz.y > Globals.LOWER_RIGHT.y:
-		cam.position.y = Globals.LOWER_RIGHT.y - hz.y
+	cam.position = position.clamp(Globals.WORLD_BOUNDARY.position + hz, Globals.WORLD_BOUNDARY.end - hz)
 
 func hit_player(direction: Vector2):
 	if not is_invincible:

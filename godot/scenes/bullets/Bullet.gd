@@ -5,8 +5,13 @@ extends CharacterBody2D
 var direction: Vector2
 
 func _physics_process(_delta: float) -> void:
-	velocity = direction * SPEED
-	move_and_slide()
+	var region: Rect2 = $Sprite2D.get_rect()
+	region.position += position
+	if Globals.WORLD_BOUNDARY.intersects(region):
+		velocity = direction * SPEED
+		move_and_slide()
+	else:
+		queue_free()
 
 func _on_player_hit(body):
 	# hit player and despawn
