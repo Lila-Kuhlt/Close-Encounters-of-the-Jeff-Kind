@@ -27,6 +27,8 @@ func translate_to_inner(pos: Vector2, rect: Rect2) -> Vector2:
 	return Vector2(rect.end.x, c.y + ctopyx)
 
 func _process(_delta: float) -> void:
+	if is_queued_for_deletion() or destination.is_queued_for_deletion():
+	 	return
 	var rect := get_viewport().get_visible_rect()
 	rect.size -= Vector2(8, 8)
 	var pos := destination.get_canvas_transform() * destination.position
