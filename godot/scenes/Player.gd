@@ -5,9 +5,10 @@ const Bullet = preload("res://scenes/bullets/Point.Bullet.tscn")
 
 const SPEED: float = 80.0
 const MAX_QUEUE_SIZE: int = 5
+const MAX_LIFES: int = 3
 
 var package_queue := []
-var missed_packages := 0
+var lifes := MAX_LIFES
 
 ## Tries to add a package to the queue and returns wether the package could be added.
 func collect_package(package) -> bool:
@@ -28,7 +29,9 @@ func _on_package_timeout(package):
 	# check if package was already delivered
 	if package != null:
 		remove_package(package)
-		missed_packages += 1
+		lifes -= 1
+		if lifes <= 0:
+			get_parent().get_node("UI").trigger_game_over()
 
 func _on_destination_detector_area_entered(area):
 	var dest = area.get_parent()

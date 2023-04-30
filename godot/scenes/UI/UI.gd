@@ -17,3 +17,7 @@ func _on_button_pressed() -> void:
 	just_paused = true
 	get_tree().paused = false
 	$PauseMenu.hide()
+
+func trigger_game_over() -> void:
+	get_tree().paused = true
+	$GameOver.show()
