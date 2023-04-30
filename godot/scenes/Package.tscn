@@ -1,17 +1,77 @@
-[gd_scene load_steps=4 format=3 uid="uid://noq6fvko5jwt"]
+[gd_scene load_steps=8 format=3 uid="uid://noq6fvko5jwt"]
 
 [ext_resource type="Script" path="res://scenes/Package.gd" id="1_jukrg"]
 [ext_resource type="Texture2D" uid="uid://n2irus8kabqp" path="res://assets/package.png" id="2_f8cij"]
+[ext_resource type="Texture2D" uid="uid://cif408mrbg4gc" path="res://assets/collectables.png" id="3_jmste"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kccmo"]
 radius = 8.0
 
+[sub_resource type="Animation" id="Animation_cavh4"]
+resource_name = "idle"
+length = 3.0
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpritePackage:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.2, 2, 2.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 0, 2, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpritePackage:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.75, 0.8, 0.85, 0.9, 0.95, 1.75, 1.8, 1.85, 1.9, 1.95, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.174533, -0.174533, 0.0872665, 0.0, 0.0, 0.174533, -0.174533, 0.0872665, 0.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_qbvfu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpritePackage:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpritePackage:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3xdcr"]
+_data = {
+"RESET": SubResource("Animation_qbvfu"),
+"idle": SubResource("Animation_cavh4")
+}
+
 [node name="Package" type="Node2D"]
 script = ExtResource("1_jukrg")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture_filter = 1
-texture = ExtResource("2_f8cij")
 
 [node name="PlayerDetector" type="Area2D" parent="."]
 collision_layer = 0
@@ -20,5 +80,25 @@ monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
 shape = SubResource("CircleShape2D_kccmo")
+
+[node name="SpritePackage" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, 2)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_f8cij")
+offset = Vector2(0, -6)
+hframes = 4
+
+[node name="SpriteCollectible" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_jmste")
+hframes = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_3xdcr")
+}
 
 [connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detected"]

@@ -105,7 +105,7 @@ func spawn_package():
 	$UI.add_child(arrow)
 	package.blue_arrow = arrow
 
-	package.start_timer(20.0, $Jeff._on_package_timeout.bind(package))
+	package.start_timer(20.0, Globals.Collectible.WEAPON, $Jeff._on_package_timeout.bind(package))
 	return package
 
 func _on_package_spawn_timer_timeout():
