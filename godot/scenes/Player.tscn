@@ -38,7 +38,6 @@ collision_layer = 0
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DestinationDetector"]
-position = Vector2(49, 12)
 shape = SubResource("CircleShape2D_m6hdk")
 
 [connection signal="area_entered" from="DestinationDetector" to="." method="_on_destination_detector_area_entered"]
