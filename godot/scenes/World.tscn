@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bkxrlf0524qe0"]
+[gd_scene load_steps=16 format=3 uid="uid://bkxrlf0524qe0"]
 
 [ext_resource type="Texture2D" uid="uid://dtljv0yknrayy" path="res://assets/ground-tileset.png" id="1_mf6op"]
 [ext_resource type="Script" path="res://scenes/World.gd" id="1_oh1tc"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://b46feogejdc57" path="res://assets/building-tileset.png" id="2_gcg03"]
 [ext_resource type="Texture2D" uid="uid://c1ufwvj84guet" path="res://assets/park.png" id="3_d6dp6"]
 [ext_resource type="PackedScene" uid="uid://bqwg30od0fmhk" path="res://scenes/UI/UI.tscn" id="6_th27r"]
+[ext_resource type="PackedScene" uid="uid://h6flkwfkrrt1" path="res://scenes/aliens/FatAlien.tscn" id="8_od7oq"]
+[ext_resource type="PackedScene" uid="uid://bl5rjtsp02jnk" path="res://scenes/aliens/FixedAlien.tscn" id="9_eukl8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_me0c7"]
 resource_name = "ground1"
@@ -150,7 +152,7 @@ texture = ExtResource("2_gcg03")
 
 [sub_resource type="TileSet" id="TileSet_0busg"]
 tile_size = Vector2i(8, 8)
-physics_layer_0/collision_layer = 9
+physics_layer_0/collision_layer = 11
 custom_data_layer_0/name = "canPackagesSpawn"
 custom_data_layer_0/type = 1
 custom_data_layer_1/name = "canBeDestination"
@@ -190,6 +192,12 @@ autostart = true
 [node name="UI" parent="." instance=ExtResource("6_th27r")]
 
 [node name="Camera" type="Camera2D" parent="."]
+
+[node name="FatAlien" parent="." instance=ExtResource("8_od7oq")]
+position = Vector2(409, 216)
+
+[node name="FixedAlien" parent="." instance=ExtResource("9_eukl8")]
+position = Vector2(347, 222)
 
 [connection signal="timeout" from="UfoTimer" to="." method="_on_ufo_timer_timeout"]
 [connection signal="timeout" from="PackageSpawnTimer" to="." method="_on_package_spawn_timer_timeout"]
