@@ -11,30 +11,36 @@ extends Node2D
 
 func set_radius_outer(v):
 	radius_outer = v
-	$ColorRect.size = Vector2i(2 * radius_outer, 2 * radius_outer)
-	$ColorRect.position = -Vector2i(radius_outer, radius_outer)
-	_update_radii()
+	if is_inside_tree():
+		$ColorRect.size = Vector2i(2 * radius_outer, 2 * radius_outer)
+		$ColorRect.position = -Vector2i(radius_outer, radius_outer)
+		_update_radii()
 	
 func set_radius_inner(v):
 	radius_inner = v
-	$ColorRect.size = Vector2i(2 * radius_outer, 2 * radius_outer)
-	$ColorRect.position = -Vector2i(radius_outer, radius_outer)
-	_update_radii()
+	if is_inside_tree():
+		$ColorRect.size = Vector2i(2 * radius_outer, 2 * radius_outer)
+		$ColorRect.position = -Vector2i(radius_outer, radius_outer)
+		_update_radii()
 
 func set_color_background(v):
 	color_background = v
-	get_shader_material().set_shader_parameter("color_background", color_background)
+	if is_inside_tree():
+		get_shader_material().set_shader_parameter("color_background", color_background)
 
 func set_color_bar(v):
 	color_bar = v
-	get_shader_material().set_shader_parameter("color_bar", color_bar)
+	if is_inside_tree():
+		get_shader_material().set_shader_parameter("color_bar", color_bar)
 	
 func set_value_max(v):
 	value_max = v
-	_update_progress()
+	if is_inside_tree():
+		_update_progress()
 func set_value(v):
 	value = v
-	_update_progress()
+	if is_inside_tree():
+		_update_progress()
 
 func _update_progress():
 	get_shader_material().set_shader_parameter("progress", value / float(value_max))
@@ -49,3 +55,8 @@ func _ready():
 	set_radius_inner(radius_inner)
 	set_color_background(color_background)
 	set_color_bar(color_bar)
+	set_value_max(value_max)
+	set_value(value)
+	
+	if not Engine.is_editor_hint():
+		$ColorRect.material = $ColorRect.material.duplicate()
