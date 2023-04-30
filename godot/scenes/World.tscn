@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bkxrlf0524qe0"]
+[gd_scene load_steps=18 format=3 uid="uid://bkxrlf0524qe0"]
 
 [ext_resource type="Texture2D" uid="uid://dtljv0yknrayy" path="res://assets/ground-tileset.png" id="1_mf6op"]
 [ext_resource type="Script" path="res://scenes/World.gd" id="1_oh1tc"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://bqwg30od0fmhk" path="res://scenes/UI/UI.tscn" id="6_th27r"]
 [ext_resource type="PackedScene" uid="uid://h6flkwfkrrt1" path="res://scenes/aliens/FatAlien.tscn" id="8_od7oq"]
 [ext_resource type="PackedScene" uid="uid://bl5rjtsp02jnk" path="res://scenes/aliens/FixedAlien.tscn" id="9_eukl8"]
+[ext_resource type="PackedScene" uid="uid://bck28667moqd0" path="res://scenes/aliens/ThinAlien.tscn" id="10_rhged"]
+[ext_resource type="PackedScene" uid="uid://cqfng4uiyrf4o" path="res://scenes/aliens/HomieAlien.tscn" id="11_m3mrd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_me0c7"]
 resource_name = "ground1"
@@ -180,7 +182,7 @@ layer_0/tile_data = PackedInt32Array(655360, 2, 0, 720896, 2, 0, 786432, 2, 0, 8
 
 [node name="Jeff" parent="." instance=ExtResource("1_q82cg")]
 y_sort_enabled = true
-position = Vector2(403, 268)
+position = Vector2(551, 720)
 
 [node name="UfoTimer" type="Timer" parent="."]
 wait_time = 4.0
@@ -198,11 +200,21 @@ position = Vector2(409, 216)
 [node name="FixedAlien" parent="." instance=ExtResource("9_eukl8")]
 position = Vector2(347, 222)
 
+[node name="Alien" parent="." instance=ExtResource("10_rhged")]
+position = Vector2(667, 738)
+NUM_BULLETS = 6
+
 [node name="Boundary" type="Control" parent="." groups=["Boundary"]]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 1238.0
-offset_bottom = 1186.0
+offset_right = 1252.0
+offset_bottom = 1227.0
+
+[node name="FatAlien2" parent="." instance=ExtResource("8_od7oq")]
+position = Vector2(612, 632)
+
+[node name="HomieAlien" parent="." instance=ExtResource("11_m3mrd")]
+position = Vector2(399, 738)
 
 [connection signal="timeout" from="UfoTimer" to="." method="_on_ufo_timer_timeout"]
 [connection signal="timeout" from="PackageSpawnTimer" to="." method="_on_package_spawn_timer_timeout"]

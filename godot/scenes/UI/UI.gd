@@ -5,9 +5,6 @@ const Heart = preload("res://scenes/UI/Heart.tscn")
 var just_paused := false
 var hearts: Array[TextureRect] = []
 
-func _ready():
-	add_to_group("UI")
-
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed('pause'):
 		if not just_paused:
@@ -40,3 +37,10 @@ func set_health(health: int) -> void:
 		var tex: AtlasTexture = child.texture
 		tex.region.position.x = 8 if i < health else 0
 		i += 1
+
+func _on_quit_button_pressed() -> void:
+	get_tree().quit(0)
+
+func _on_restart_button_pressed() -> void:
+	get_tree().reload_current_scene()
+	get_tree().paused = false

@@ -34,13 +34,13 @@ func _process(_delta: float) -> void:
 	var rect := get_viewport().get_visible_rect()
 	rect.size -= Vector2(8, 8)
 	var pos: Vector2 = destination.get_canvas_transform() * (destination.position - 0.5 * $Texture.size)
-	var dir := (pos - rect.get_center()).normalized()
-	
+	var dir := rect.get_center().direction_to(pos)
+
 	if not rect.has_point(pos):
 		pos = translate_to_inner(pos, rect)
 	else:
 		pos -= DESTINATION_MARGIN * dir
-		
+
 	$Texture.position = pos
 	$Texture.rotation = Vector2(0, -1).angle_to(dir)
 
