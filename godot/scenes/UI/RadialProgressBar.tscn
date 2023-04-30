@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://by1k3slytatgp"]
+
+[ext_resource type="Script" path="res://scenes/UI/RadialProgressBar.gd" id="1_msvgr"]
+[ext_resource type="Shader" path="res://scenes/UI/RadialProgressBar.gdshader" id="1_wv1rn"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_psnb3"]
+shader = ExtResource("1_wv1rn")
+shader_parameter/color_background = Color(0.3, 0.3, 0.3, 0.8)
+shader_parameter/color_bar = Color(0.8, 0.1, 0.1, 1)
+shader_parameter/progress = 0.5
+shader_parameter/radius_inner = 0.625
+
+[node name="RadialProgressBar" type="Node2D"]
+script = ExtResource("1_msvgr")
+radius_outer = 8
+radius_inner = 5
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_psnb3")
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
