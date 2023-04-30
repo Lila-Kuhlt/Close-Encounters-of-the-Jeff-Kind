@@ -4,7 +4,7 @@ extends CharacterBody2D
 @export var MIN_MOVEMENT_RADIUS := 3
 @export var MAX_MOVEMENT_RADIUS := 8
 @export var WALK_CHANCE := 0.2
-const Bullet = preload("res://scenes/bullets/Point.Bullet.tscn")
+const Bullet = preload("res://scenes/bullets/PointBullet.tscn")
 var x := 0.0
 
 @onready var _astar: AStarGrid2D = get_parent()._astar

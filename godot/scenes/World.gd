@@ -39,10 +39,12 @@ func populate_walkable_street_tiles():
 class TileLocation:
 	var source_id: int
 	var atlas_pos: Vector2i
+	var center_offset: Vector2
 
-	func _init(my_source_id: int, my_atlas_pos: Vector2i):
+	func _init(my_source_id: int, my_atlas_pos: Vector2i, my_center_offset: Vector2):
 		self.source_id = my_source_id
 		self.atlas_pos = my_atlas_pos
+		self.center_offset = my_center_offset
 
 func _ready():
 	package_spawn_areas = populate_areas("canPackagesSpawn")
@@ -57,10 +59,10 @@ func _ready():
 	# _init_astar()
 	var alien = FatAlien.instantiate()
 	alien.position = _astar.get_point_position(Vector2i(14, 17))
-	add_child(alien)
+	# add_child(alien)
 	var fixed_alien = FixedAlien.instantiate()
 	fixed_alien.position = _astar.get_point_position(Vector2i(18, 3))
-	add_child(fixed_alien)
+	# add_child(fixed_alien)
 
 func get_areas(layer_name: String) -> Array[TileLocation]:
 	var ts: TileSet = $ObjectTileMap.tile_set
@@ -70,18 +72,18 @@ func get_areas(layer_name: String) -> Array[TileLocation]:
 		var source: TileSetAtlasSource = ts.get_source(sid)
 		for tix in range(source.get_tiles_count()):
 			var xy := source.get_tile_id(tix)
-			var data = source.get_tile_data(xy, 0)
+			var data := source.get_tile_data(xy, 0)
 			if data.get_custom_data(layer_name):
-				tile_locs.append(TileLocation.new(sid, xy))
+				tile_locs.append(TileLocation.new(sid, xy, Vector2(-data.texture_origin)))
 	return tile_locs
 
 func populate_areas(layer_name: String):
-	var map: TileMap = get_node('ObjectTileMap')
+	var map: TileMap = $ObjectTileMap
 	var locs := get_areas(layer_name)
 	var areas: Array[Vector2] = []
 	for loc in locs:
 		for area in map.get_used_cells_by_id(0, loc.source_id, loc.atlas_pos):
-			areas.append(map.map_to_local(area))
+			areas.append(map.map_to_local(area) + loc.center_offset)
 	return areas
 
 func start_package_spawn_timer():
@@ -94,10 +96,12 @@ func spawn_package():
 	add_child(package)
 
 	# select spawn position
+	assert(not package_spawn_areas.is_empty())
 	var spawn_idx := randi_range(0, len(package_spawn_areas) - 1)
 	package.position = package_spawn_areas[spawn_idx]
 
 	# select destination
+	assert(not package_destination_areas.is_empty())
 	var dest_idx := randi_range(0, len(package_destination_areas) - 1)
 	package.destination = package_destination_areas[dest_idx]
 

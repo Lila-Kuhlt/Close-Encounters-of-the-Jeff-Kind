@@ -1,17 +1,20 @@
 extends CharacterBody2D
 
 const Package = preload("res://scenes/Package.tscn")
-const Bullet = preload("res://scenes/bullets/Point.Bullet.tscn")
+const Bullet = preload("res://scenes/bullets/PointBullet.tscn")
 
-const SPEED: float = 80.0
+const SPEED: float = 280.0 if Globals.DEBUG else 90.0
 const MAX_QUEUE_SIZE: int = 5
-const MAX_LIFES: int = 3
+const MAX_LIFES: int = 20 if Globals.DEBUG else 3
+const KNOCKBACK_STRENGTH: float = 2
+const KNOCKBACK_ENVELOPE: float = 0.86
 
 var package_queue := []
 var lifes := MAX_LIFES
 var packages_delivered := 0
 var is_stunned := false
 var is_invincible := false
+var knockback := Vector2(0, 0)
 
 func _ready():
 	get_parent().get_node("UI").set_max_health(MAX_LIFES)
@@ -52,8 +55,10 @@ func _on_destination_detector_area_entered(area):
 
 func _physics_process(_delta):
 	var direction := Input.get_vector("left", "right", "up", "down")
-	if is_stunned:
+	if is_stunned and not Globals.DEBUG:
 		direction = Vector2(0, 0)
+	direction += knockback
+	knockback *= KNOCKBACK_ENVELOPE
 	if direction.x > 0:
 		$Character.scale = Vector2i(-1, 1)
 	elif direction.x < 0:
@@ -64,7 +69,9 @@ func _physics_process(_delta):
 
 	get_parent().get_node('Camera').position = position
 
-func hit_player():
+func hit_player(direction: Vector2):
+	if not is_invincible:
+		knockback = direction.normalized() * KNOCKBACK_STRENGTH
 	if is_stunned or is_invincible:
 		return
 	is_stunned = true

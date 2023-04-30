@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const Bullet = preload("res://scenes/bullets/Line.Bullet.tscn")
+const Bullet = preload("res://scenes/bullets/LineBullet.tscn")
 
 var x := 0.0
 

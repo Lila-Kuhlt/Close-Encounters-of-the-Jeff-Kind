@@ -2,7 +2,6 @@
 extends Node2D
 
 const Arrow = preload("res://scenes/UI/Arrow.tscn")
-const Package = preload("res://scenes/Package.tscn")
 
 var destination: Node2D
 var arrow

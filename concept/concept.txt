@@ -1,0 +1,45 @@
+Devivery
+
+Grundszenario:
+	Eine Stadt wird von einer Alieninvasion angegriffen.
+	Du bist der <Postbote?> der noch versucht die Überbliebenen zu versorgen.
+	Dabei transportierst du Packete zu bestimmeten Zulieferungspunkte. Diese musst du in einer bestimmten Zeit aufsammeln und abliefern. Leider erschweren die Aliens deine Arbeit.
+	Sie sind in der ganzen Stadt verstreut und greifen dich an. Solltest du getroffen werden musst du deine Packetinhalte wieder zusammensammeln (Und bekommst eine Zeitstrafe auf deine Auslieferungszeit).
+	Wenn du das Paket nicht in der richtigen Zeit zuliefern kannst 
+
+Stadt:
+Stellt die Karte dar. Diese Besteht aus:
+	Häusern
+	Straßen
+	Zulieferungspunkte
+	‹‹Sonstige Interessante Punkte››
+
+	Veränderde Punkte? -> Kacheln müssen Modular sein. (Bspw. Ruinen die gesprengt werden können)
+
+Paket - Ideen
+	Zivielgüter {Nahrung, Medizin}
+	Waffen {Waffen, Rüstung, Munition}
+	Laborutenlilien {Alienleichen, }
+
+Zulieferungspunkte - Ideen
+	Labor
+	Widerstandspunkte (Bewaffnet)
+	Krankenhäuser
+	
+Aliens
+	Werden zu den Alientypen von der Programmieren erst disignt
+
+Spieler
+	Muss Packete Aufheben können
+	Muss Packete Abgeben können
+	Muss Schaden nehmen können (Zeitstrafe)
+
+	
+
+	Kann Puckete fallen lassen
+
+
+
+
+
+
