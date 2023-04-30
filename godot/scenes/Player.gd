@@ -48,6 +48,11 @@ func _on_destination_detector_area_entered(area):
 
 func _physics_process(_delta):
 	var direction := Input.get_vector("left", "right", "up", "down")
+	if direction.x > 0:
+		$Character.scale = Vector2i(-1, 1)
+	elif direction.x < 0:
+		$Character.scale = Vector2i(1, 1)
+	
 	velocity = direction * SPEED
 	move_and_slide()
 	
