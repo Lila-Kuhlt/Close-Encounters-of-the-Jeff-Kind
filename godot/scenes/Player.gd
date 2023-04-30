@@ -16,6 +16,8 @@ var is_stunned := false
 var is_invincible := false
 var knockback := Vector2(0, 0)
 
+@onready var cam: Camera2D = get_parent().get_node('Camera')
+
 func _ready():
 	get_parent().get_node("UI").set_max_health(MAX_LIFES)
 
@@ -67,7 +69,17 @@ func _physics_process(_delta):
 	velocity = direction * SPEED
 	move_and_slide()
 
-	get_parent().get_node('Camera').position = position
+	var vp := get_viewport_rect()
+	var hz := vp.size * 0.5
+	cam.position = position
+	if cam.position.x - hz.x < Globals.UPPER_LEFT.x:
+		cam.position.x = Globals.UPPER_LEFT.x + hz.x
+	if cam.position.y - hz.y < Globals.UPPER_LEFT.y:
+		cam.position.y = Globals.UPPER_LEFT.y + hz.y
+	if cam.position.x + hz.x > Globals.LOWER_RIGHT.x:
+		cam.position.x = Globals.LOWER_RIGHT.x - hz.x
+	if cam.position.y + hz.y > Globals.LOWER_RIGHT.y:
+		cam.position.y = Globals.LOWER_RIGHT.y - hz.y
 
 func hit_player(direction: Vector2):
 	if not is_invincible:
