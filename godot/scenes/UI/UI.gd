@@ -5,9 +5,6 @@ const Heart = preload("res://scenes/UI/Heart.tscn")
 var just_paused := false
 var hearts: Array[TextureRect] = []
 
-func _ready():
-	add_to_group("UI")
-
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed('pause'):
 		if not just_paused:
@@ -46,3 +43,4 @@ func _on_quit_button_pressed() -> void:
 
 func _on_restart_button_pressed() -> void:
 	get_tree().reload_current_scene()
+	get_tree().paused = false
