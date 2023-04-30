@@ -1,10 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://da6n6ue6ry5el"]
+[gd_scene load_steps=3 format=3 uid="uid://t1td8e6x5eb3"]
 
+[ext_resource type="Script" path="res://scenes/Ufo.gd" id="1_5vabe"]
 [ext_resource type="Texture2D" uid="uid://b1tk4xkmbn6vb" path="res://assets/ufo.png" id="1_f2kdl"]
-[ext_resource type="Script" path="res://src/Ufo.gd" id="1_o68lp"]
 
 [node name="Ufo" type="Node2D"]
-script = ExtResource("1_o68lp")
+script = ExtResource("1_5vabe")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_f2kdl")

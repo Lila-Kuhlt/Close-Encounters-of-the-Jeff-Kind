@@ -161,7 +161,6 @@ sources/0 = SubResource("TileSetAtlasSource_et7kk")
 sources/2 = SubResource("TileSetAtlasSource_kkigg")
 
 [node name="World" type="Node2D"]
-position = Vector2(-1, 0)
 script = ExtResource("1_oh1tc")
 
 [node name="GroundTileMap" type="TileMap" parent="."]
@@ -198,6 +197,12 @@ position = Vector2(409, 216)
 
 [node name="FixedAlien" parent="." instance=ExtResource("9_eukl8")]
 position = Vector2(347, 222)
+
+[node name="Boundary" type="Control" parent="." groups=["Boundary"]]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1238.0
+offset_bottom = 1186.0
 
 [connection signal="timeout" from="UfoTimer" to="." method="_on_ufo_timer_timeout"]
 [connection signal="timeout" from="PackageSpawnTimer" to="." method="_on_package_spawn_timer_timeout"]

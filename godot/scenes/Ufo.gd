@@ -19,11 +19,15 @@ func _ready():
 	position = rand_edge_point(vp) + vp.position
 	direction = (center - position).normalized()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	position += delta * SPEED * direction
-	travel_time += delta * SPEED
-	if travel_time > MAX_TRAVEL_TIME:
+func _physics_process(delta):
+	var region: Rect2 = $Sprite2D.get_rect()
+	region.position += position
+	if Globals.WORLD_BOUNDARY.intersects(region):
+		position += delta * SPEED * direction
+		travel_time += delta * SPEED
+		if travel_time > MAX_TRAVEL_TIME:
+			queue_free()
+	else:
 		queue_free()
 
 func rand_edge_point(vp: Rect2) -> Vector2:
