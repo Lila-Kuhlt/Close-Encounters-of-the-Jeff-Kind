@@ -10,6 +10,7 @@ action = &"pause"
 events = [SubResource("InputEventAction_t7usk")]
 
 [node name="UI" type="CanvasLayer" groups=["UI"]]
+layer = 2
 script = ExtResource("1_aneth")
 
 [node name="HeartVBox" type="VBoxContainer" parent="."]
