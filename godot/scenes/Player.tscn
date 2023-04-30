@@ -7,8 +7,8 @@
 radius = 4.0
 height = 14.0
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_br4yk"]
-radius = 5.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ap1vd"]
+radius = 4.0
 height = 16.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_m6hdk"]
@@ -31,13 +31,14 @@ collision_layer = 5
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-shape = SubResource("CapsuleShape2D_br4yk")
+shape = SubResource("CapsuleShape2D_ap1vd")
 
 [node name="DestinationDetector" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DestinationDetector"]
+position = Vector2(49, 12)
 shape = SubResource("CircleShape2D_m6hdk")
 
 [connection signal="area_entered" from="DestinationDetector" to="." method="_on_destination_detector_area_entered"]
