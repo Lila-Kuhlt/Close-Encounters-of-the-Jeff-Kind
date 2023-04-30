@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://i0ulxtay483o"]
+
+[ext_resource type="PackedScene" uid="uid://b0pfot8ar77fj" path="res://scenes/bullets/Bullet.tscn" id="1_bery2"]
+[ext_resource type="Script" path="res://scenes/bullets/HomingBullet.gd" id="2_cnx2s"]
+
+[node name="HomingBullet" instance=ExtResource("1_bery2")]
+script = ExtResource("2_cnx2s")
+SPEED = 50.0

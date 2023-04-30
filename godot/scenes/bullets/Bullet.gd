@@ -4,15 +4,20 @@ extends CharacterBody2D
 
 var direction: Vector2
 
-func _physics_process(delta: float) -> void:
-	velocity = direction * SPEED
-	move_and_slide()
+func _physics_process(_delta: float) -> void:
+	var region: Rect2 = $Sprite2D.get_rect()
+	region.position += position
+	if Globals.WORLD_BOUNDARY.intersects(region):
+		velocity = direction * SPEED
+		move_and_slide()
+	else:
+		queue_free()
 
 func _on_player_hit(body):
 	# hit player and despawn
 	body.hit_player(direction)
 	queue_free()
 
-func _on_building_collision(body):
+func _on_building_collision(_body):
 	# despawn
 	queue_free()

@@ -7,10 +7,10 @@ var x := 0.0
 func _on_timer_timeout():
 	var bullet = Bullet.instantiate()
 	var bullet2 = Bullet.instantiate()
-	bullet.direction = Vector2(sin(x), cos(x))
-	bullet2.direction = Vector2(-sin(x), -cos(x))
-	bullet.rotate(atan2(bullet.direction.y, bullet.direction.x) - PI/2)
-	bullet2.rotate(atan2(bullet.direction.y, bullet.direction.x) - PI/2)
+	bullet.direction = Vector2.from_angle(x)
+	bullet2.direction = -Vector2.from_angle(x)
+	bullet.rotation = x - PI/2
+	bullet2.rotation = x - PI/2
 	bullet.position = position
 	bullet2.position = position
 	x += PI/2

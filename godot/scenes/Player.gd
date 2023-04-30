@@ -3,7 +3,7 @@ extends CharacterBody2D
 const Package = preload("res://scenes/Package.tscn")
 const Bullet = preload("res://scenes/bullets/PointBullet.tscn")
 
-const SPEED: float = 280.0 if Globals.DEBUG else 90.0
+const SPEED: float = 120.0 if Globals.DEBUG else 90.0
 const MAX_QUEUE_SIZE: int = 5
 const MAX_LIFES: int = 20 if Globals.DEBUG else 3
 const KNOCKBACK_STRENGTH: float = 2
@@ -15,6 +15,8 @@ var packages_delivered := 0
 var is_stunned := false
 var is_invincible := false
 var knockback := Vector2(0, 0)
+
+@onready var cam: Camera2D = get_parent().get_node('Camera')
 
 func _ready():
 	get_parent().get_node("UI").set_max_health(MAX_LIFES)
@@ -67,7 +69,10 @@ func _physics_process(_delta):
 	velocity = direction * SPEED
 	move_and_slide()
 
-	get_parent().get_node('Camera').position = position
+	# clamp camera to world
+	var vp := get_viewport_rect()
+	var hz := vp.size * 0.5
+	cam.position = position.clamp(Globals.WORLD_BOUNDARY.position + hz, Globals.WORLD_BOUNDARY.end - hz)
 
 func hit_player(direction: Vector2):
 	if not is_invincible:

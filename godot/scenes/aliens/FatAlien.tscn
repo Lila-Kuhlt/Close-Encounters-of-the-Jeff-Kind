@@ -8,11 +8,7 @@
 script = ExtResource("2_laduy")
 
 [node name="Sprite2D" parent="." index="0"]
-texture_filter = 1
 texture = ExtResource("3_7pk35")
-
-[node name="Timer" parent="." index="2"]
-wait_time = 0.25
 
 [node name="WalkTimer" type="Timer" parent="." index="3"]
 wait_time = 1.5

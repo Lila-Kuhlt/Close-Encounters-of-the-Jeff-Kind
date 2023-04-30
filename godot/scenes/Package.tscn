@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/Package.gd" id="1_g1yjm"]
 [ext_resource type="Texture2D" uid="uid://n2irus8kabqp" path="res://assets/package.png" id="2_f8cij"]
-[ext_resource type="PackedScene" uid="uid://bbe0ntrbi02ne" path="res://scenes/IconCollectible.tscn" id="3_xgt0x"]
+[ext_resource type="PackedScene" uid="uid://dim5by60j84ng" path="res://scenes/IconCollectible.tscn" id="3_xgt0x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j0e3u"]
 
@@ -81,7 +81,6 @@ monitorable = false
 shape = SubResource("RectangleShape2D_j0e3u")
 
 [node name="SpritePackage" type="Sprite2D" parent="."]
-texture_filter = 1
 position = Vector2(0, 2)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_f8cij")
