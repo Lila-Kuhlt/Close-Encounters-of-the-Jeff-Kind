@@ -11,7 +11,7 @@ texture_filter = 1
 texture = ExtResource("1_f2kdl")
 
 [node name="BulletTimer" type="Timer" parent="."]
-wait_time = 0.25
+wait_time = 0.7
 autostart = true
 
 [connection signal="timeout" from="BulletTimer" to="." method="_on_timer_timeout"]
