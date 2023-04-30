@@ -10,6 +10,9 @@ const MAX_LIFES: int = 3
 var package_queue := []
 var lifes := MAX_LIFES
 
+func _ready():
+	get_parent().get_node("UI").set_max_health(MAX_LIFES)
+
 ## Tries to add a package to the queue and returns wether the package could be added.
 func collect_package(package) -> bool:
 	if package_queue.size() < MAX_QUEUE_SIZE:
@@ -29,9 +32,10 @@ func _on_package_timeout(package):
 	# check if package was already delivered
 	if package != null:
 		remove_package(package)
-		lifes -= 1
-		if lifes <= 0:
+		lifes = max(lifes - 1, 0)
+		if lifes == 0:
 			get_parent().get_node("UI").trigger_game_over()
+		get_parent().get_node("UI").set_health(lifes)
 
 func _on_destination_detector_area_entered(area):
 	var dest = area.get_parent()

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddxbbv2dowufi"]
+
+[ext_resource type="Texture2D" uid="uid://bos0no2j1bua7" path="res://assets/hearts.png" id="1_d158c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2cs3v"]
+resource_local_to_scene = true
+atlas = ExtResource("1_d158c")
+region = Rect2(0, 0, 8, 8)
+
+[node name="Heart" type="TextureRect"]
+texture = SubResource("AtlasTexture_2cs3v")

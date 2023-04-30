@@ -1,6 +1,9 @@
 extends CanvasLayer
 
+const Heart = preload("res://scenes/UI/Heart.tscn")
+
 var just_paused := false
+var hearts: Array[TextureRect] = []
 
 func _ready():
 	add_to_group("UI")
@@ -21,3 +24,17 @@ func _on_button_pressed() -> void:
 func trigger_game_over() -> void:
 	get_tree().paused = true
 	$GameOver.show()
+
+func set_max_health(health: int) -> void:
+	for i in range(health):
+		var heart: TextureRect = Heart.instantiate()
+		$HeartVBox/HeartContainer.add_child(heart)
+		hearts.append(heart)
+	set_health(health)
+
+func set_health(health: int) -> void:
+	var i := 0
+	for child in hearts:
+		var tex: AtlasTexture = child.texture
+		tex.region.position.x = 8 if i < health else 0
+		i += 1
