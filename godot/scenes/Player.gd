@@ -10,6 +10,8 @@ const MAX_LIFES: int = 3
 var package_queue := []
 var lifes := MAX_LIFES
 var packages_delivered := 0
+var is_stunned := false
+var is_invincible := false
 
 func _ready():
 	get_parent().get_node("UI").set_max_health(MAX_LIFES)
@@ -50,6 +52,8 @@ func _on_destination_detector_area_entered(area):
 
 func _physics_process(_delta):
 	var direction := Input.get_vector("left", "right", "up", "down")
+	if is_stunned:
+		direction = Vector2(0, 0)
 	if direction.x > 0:
 		$Character.scale = Vector2i(-1, 1)
 	elif direction.x < 0:
@@ -59,3 +63,21 @@ func _physics_process(_delta):
 	move_and_slide()
 
 	get_parent().get_node('Camera').position = position
+
+func hit_player():
+	if is_stunned or is_invincible:
+		return
+	is_stunned = true
+	$AnimationPlayer.play("hit")
+	$StunTimer.start()
+
+func _on_stun_timer_timeout() -> void:
+	is_invincible = true
+	is_stunned = false
+	$AnimationPlayer.stop()
+	$AnimationPlayer.play("invincible")
+	$InvincibilityTimer.start()
+
+func _on_invincibility_timer_timeout() -> void:
+	$AnimationPlayer.stop()
+	is_invincible = false
