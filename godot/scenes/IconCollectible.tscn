@@ -1,10 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bbe0ntrbi02ne"]
+[gd_scene load_steps=3 format=3 uid="uid://dim5by60j84ng"]
 
 [ext_resource type="Texture2D" uid="uid://cif408mrbg4gc" path="res://assets/collectables.png" id="1_4mtpq"]
 [ext_resource type="Script" path="res://scenes/IconCollectible.gd" id="2_6q081"]
 
 [node name="IconCollectible" type="Sprite2D"]
-texture_filter = 1
 position = Vector2(0, 1)
 texture = ExtResource("1_4mtpq")
 hframes = 3

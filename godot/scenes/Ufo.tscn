@@ -7,7 +7,6 @@
 script = ExtResource("1_o68lp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture_filter = 1
 texture = ExtResource("1_f2kdl")
 
 [node name="BulletTimer" type="Timer" parent="."]
