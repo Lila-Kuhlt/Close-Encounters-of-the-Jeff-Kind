@@ -8,7 +8,9 @@ script = ExtResource("2_bm4v0")
 
 [node name="Texture" type="TextureRect" parent="."]
 texture_filter = 1
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = -1
+offset_right = 8.0
+offset_bottom = 8.0
+pivot_offset = Vector2(4, 4)
 texture = ExtResource("1_uuu2c")
 stretch_mode = 2

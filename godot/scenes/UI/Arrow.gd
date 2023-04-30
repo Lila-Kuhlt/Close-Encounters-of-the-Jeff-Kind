@@ -33,3 +33,4 @@ func _process(_delta: float) -> void:
 	if not rect.has_point(pos):
 		pos = translate_to_inner(pos, rect)
 	$Texture.position = pos
+	$Texture.rotation = Vector2(0, -1).angle_to(pos - rect.get_center())
