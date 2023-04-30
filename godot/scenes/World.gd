@@ -12,7 +12,27 @@ const PACKAGE_SPAWN_OFFSET := 3.0
 
 var package_spawn_areas: Array[Vector2] = []
 var package_destination_areas: Array[Node2D] = []
+var walkable_street_tiles: Array[Vector2i] = []
 var _astar = AStarGrid2D.new()
+
+func populate_walkable_street_tiles():
+	var gtm: TileMap = $GroundTileMap
+	var otm: TileMap = $ObjectTileMap
+	var grect := gtm.get_used_rect()
+	var orect := otm.get_used_rect()
+	var eend := Vector2i(max(grect.end.x, orect.end.x), max(grect.end.y, orect.end.y))
+	_astar.size = eend
+	_astar.cell_size = gtm.tile_set.tile_size
+	_astar.offset = _astar.cell_size * 0.5
+	_astar.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_ONLY_IF_NO_OBSTACLES
+	_astar.update()
+	for dy in range(0, eend.y):
+		for dx in range(0, eend.x):
+			var xy := Vector2i(dx, dy)
+			var b := gtm.get_cell_source_id(0, xy) >= 0 and otm.get_cell_source_id(0, xy) < 0
+			if b:
+				walkable_street_tiles.append(xy)
+			_astar.set_point_solid(xy, not b)
 
 class TileLocation:
 	var source_id: int
@@ -30,23 +50,11 @@ func _ready():
 		dest.position = pos
 		package_destination_areas.append(dest)
 	start_package_spawn_timer()
-	_init_astar()
+	populate_walkable_street_tiles()
+	# _init_astar()
 	var alien = FatAlien.instantiate()
-	alien.position = _astar.get_point_position(Vector2i(2, 10))
+	alien.position = _astar.get_point_position(Vector2i(5, 3))
 	add_child(alien)
-	
-
-func _init_astar():
-	var tm: TileMap = $ObjectTileMap
-	_astar.size = tm.get_used_rect().end
-	_astar.cell_size = tm.tile_set.tile_size
-	_astar.update()
-	for cell in tm.get_used_cells(0):
-		print("cell: ", cell)
-		_astar.set_point_solid(cell, true)
-
-func vector_to_grid(v: Vector2):
-	return (v/_astar.cell_size).floor()
 
 func get_areas(layer_name: String) -> Array[TileLocation]:
 	var ts: TileSet = $ObjectTileMap.tile_set
