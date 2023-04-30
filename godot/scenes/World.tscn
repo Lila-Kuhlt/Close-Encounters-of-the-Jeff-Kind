@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bqwg30od0fmhk" path="res://scenes/UI/UI.tscn" id="6_th27r"]
 [ext_resource type="PackedScene" uid="uid://h6flkwfkrrt1" path="res://scenes/aliens/FatAlien.tscn" id="8_od7oq"]
 [ext_resource type="PackedScene" uid="uid://bl5rjtsp02jnk" path="res://scenes/aliens/FixedAlien.tscn" id="9_eukl8"]
-[ext_resource type="PackedScene" uid="uid://bck28667moqd0" path="res://scenes/aliens/ThinAlien.tscn" id="10_rhged"]
+[ext_resource type="PackedScene" path="res://scenes/aliens/ThinAlien.tscn" id="10_rhged"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_me0c7"]
 resource_name = "ground1"
@@ -162,7 +162,6 @@ sources/0 = SubResource("TileSetAtlasSource_et7kk")
 sources/2 = SubResource("TileSetAtlasSource_kkigg")
 
 [node name="World" type="Node2D"]
-position = Vector2(-1, 0)
 script = ExtResource("1_oh1tc")
 
 [node name="GroundTileMap" type="TileMap" parent="."]
