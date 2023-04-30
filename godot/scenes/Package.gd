@@ -13,13 +13,13 @@ func pick_up():
 	visible = false
 	$PlayerDetector.set_deferred("monitoring", false)
 	arrow = Arrow.instantiate()
-	add_child(arrow)
+	arrow.destination = destination
+	get_parent().get_node("UI").add_child(arrow)
 
 func _on_player_detected(player):
 	player.collect_package(self)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
+func do_free() -> void:
 	if arrow:
-		# set the position of the arrow to the position of the destination house
-		arrow.get_node("Texture").position = destination.position
+		arrow.queue_free()
+	queue_free()

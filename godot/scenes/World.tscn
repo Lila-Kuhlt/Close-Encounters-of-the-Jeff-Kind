@@ -132,5 +132,7 @@ autostart = true
 
 [node name="UI" parent="." instance=ExtResource("6_th27r")]
 
+[node name="Camera" type="Camera2D" parent="."]
+
 [connection signal="timeout" from="UfoTimer" to="." method="_on_ufo_timer_timeout"]
 [connection signal="timeout" from="PackageSpawnTimer" to="." method="_on_package_spawn_timer_timeout"]

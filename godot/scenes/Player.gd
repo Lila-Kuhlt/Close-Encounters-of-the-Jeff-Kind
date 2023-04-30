@@ -21,7 +21,7 @@ func collect_package(package) -> bool:
 ## Removes a package from the queue and removes the node.
 func remove_package(package):
 	package_queue.erase(package)
-	package.queue_free()
+	package.do_free()
 
 ## This function is called when a package timer reaches 0.
 func _on_package_timeout(package):
@@ -43,8 +43,5 @@ func _physics_process(_delta):
 	var direction := Input.get_vector("left", "right", "up", "down")
 	velocity = direction * SPEED
 	move_and_slide()
-
-	# wrap position
-	var screen_size := get_viewport_rect().size
-	position.x = fposmod(position.x, screen_size.x)
-	position.y = fposmod(position.y, screen_size.y)
+	
+	get_parent().get_node('Camera').position = position
