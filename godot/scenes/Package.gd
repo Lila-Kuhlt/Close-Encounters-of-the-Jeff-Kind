@@ -4,6 +4,7 @@ const Arrow = preload("res://scenes/UI/Arrow.tscn")
 
 var destination: Node2D
 var arrow;
+var blue_arrow = null;
 
 ## Starts the timer with `time_sec` seconds and connects the callback to the `timeout` signal.
 func start_timer(time_sec: float, callback: Callable):
@@ -11,6 +12,8 @@ func start_timer(time_sec: float, callback: Callable):
 
 func pick_up():
 	visible = false
+	if blue_arrow:
+		blue_arrow.queue_free()
 	$PlayerDetector.set_deferred("monitoring", false)
 	arrow = Arrow.instantiate()
 	arrow.destination = destination

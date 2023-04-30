@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://8v3qdpvasj16"]
+
+[ext_resource type="Script" path="res://scenes/UI/Arrow.gd" id="1_i2yqe"]
+[ext_resource type="Texture2D" uid="uid://cs4iq5memtgdl" path="res://assets/arrow-blue.png" id="2_vo0k8"]
+
+[node name="BlueArrow" type="CanvasLayer"]
+script = ExtResource("1_i2yqe")
+
+[node name="Texture" type="TextureRect" parent="."]
+texture_filter = 1
+offset_right = 8.0
+offset_bottom = 8.0
+pivot_offset = Vector2(4, 4)
+texture = ExtResource("2_vo0k8")
+stretch_mode = 2

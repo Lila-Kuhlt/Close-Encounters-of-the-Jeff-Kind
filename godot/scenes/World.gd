@@ -5,6 +5,7 @@ const Ufo = preload("res://scenes/Ufo.tscn")
 const Destination = preload("res://scenes/Destination.tscn")
 const FatAlien = preload("res://scenes/aliens/FatAlien.tscn")
 const FixedAlien = preload("res://scenes/aliens/FixedAlien.tscn")
+const BlueArrow = preload("res://scenes/UI/BlueArrow.tscn")
 
 const PACKAGE_SPAWN_RATE := 6.0
 const PACKAGE_SPAWN_OFFSET := 3.0
@@ -98,6 +99,11 @@ func spawn_package():
 	# select destination
 	var dest_idx := randi_range(0, len(package_destination_areas) - 1)
 	package.destination = package_destination_areas[dest_idx]
+
+	var arrow := BlueArrow.instantiate()
+	arrow.destination = package
+	$UI.add_child(arrow)
+	package.blue_arrow = arrow
 
 	package.start_timer(20.0, $Jeff._on_package_timeout.bind(package))
 	return package
