@@ -56,7 +56,7 @@ func _on_timer_timeout():
 	for alpha in [1, -1]:
 		var bullet = Bullet.instantiate()
 
-		var d := (dest - start) * 0.0005
+		var d := (dest - start) * 0.0015
 		bullet.direction = d.rotated(alpha)
 		# var r := randf_range(-1, 1)
 		# bullet.direction = bullet.direction.rotated(r * 0.05)
