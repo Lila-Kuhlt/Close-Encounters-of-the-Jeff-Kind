@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var SPEED := 30.0
+@export var speed := 30.0
 
 var direction: Vector2
 
@@ -8,7 +8,7 @@ func _physics_process(_delta: float) -> void:
 	var region: Rect2 = $Sprite2D.get_rect()
 	region.position += position
 	if Globals.WORLD_BOUNDARY.intersects(region):
-		velocity = direction * SPEED
+		velocity = direction * speed
 		move_and_slide()
 	else:
 		queue_free()

@@ -11,7 +11,7 @@ var x := 0.0
 func _on_timer_timeout():
 	for i in range(NUM_BULLETS):
 		var bullet = Bullet.instantiate()
-		bullet.direction = Vector2.from_angle(x + i * (PI / (NUM_BULLETS / 2)))
+		bullet.direction = Vector2.from_angle(x + i * (2 * PI / NUM_BULLETS))
 		bullet.rotation = x - PI/2
 		bullet.position = position
 		get_parent().add_child(bullet)

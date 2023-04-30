@@ -30,7 +30,7 @@ func pick_up():
 	visible = false
 	blue_arrow.queue_free()
 	$PlayerDetector.set_deferred("monitoring", false)
-	
+
 	arrow = Arrow.instantiate()
 	arrow.destination = destination
 	get_parent().get_node("UI").add_child(arrow)
