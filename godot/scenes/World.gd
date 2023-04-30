@@ -58,10 +58,10 @@ func _ready():
 	# _init_astar()
 	var alien = FatAlien.instantiate()
 	alien.position = _astar.get_point_position(Vector2i(14, 17))
-	add_child(alien)
+	# add_child(alien)
 	var fixed_alien = FixedAlien.instantiate()
 	fixed_alien.position = _astar.get_point_position(Vector2i(18, 3))
-	add_child(fixed_alien)
+	# add_child(fixed_alien)
 
 func get_areas(layer_name: String) -> Array[TileLocation]:
 	var ts: TileSet = $ObjectTileMap.tile_set
