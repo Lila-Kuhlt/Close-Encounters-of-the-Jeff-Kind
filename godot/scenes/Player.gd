@@ -3,9 +3,9 @@ extends CharacterBody2D
 const Package = preload("res://scenes/Package.tscn")
 const Bullet = preload("res://scenes/bullets/PointBullet.tscn")
 
-const SPEED: float = 80.0
+const SPEED: float = 280.0 if Globals.DEBUG else 90.0
 const MAX_QUEUE_SIZE: int = 5
-const MAX_LIFES: int = 3
+const MAX_LIFES: int = 20 if Globals.DEBUG else 3
 const KNOCKBACK_STRENGTH: float = 2
 const KNOCKBACK_ENVELOPE: float = 0.86
 
@@ -55,7 +55,7 @@ func _on_destination_detector_area_entered(area):
 
 func _physics_process(_delta):
 	var direction := Input.get_vector("left", "right", "up", "down")
-	if is_stunned:
+	if is_stunned and not Globals.DEBUG:
 		direction = Vector2(0, 0)
 	direction += knockback
 	knockback *= KNOCKBACK_ENVELOPE
