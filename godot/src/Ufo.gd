@@ -24,7 +24,6 @@ func _process(delta):
 	position += delta * SPEED * direction
 	travel_time += delta * SPEED
 	if travel_time > MAX_TRAVEL_TIME:
-		print('freeing')
 		queue_free()
 
 func rand_edge_point(vp: Rect2) -> Vector2:

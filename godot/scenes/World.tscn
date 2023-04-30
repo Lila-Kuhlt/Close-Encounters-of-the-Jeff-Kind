@@ -183,7 +183,7 @@ y_sort_enabled = true
 position = Vector2(380, 238)
 
 [node name="UfoTimer" type="Timer" parent="."]
-wait_time = 1.5
+wait_time = 4.0
 autostart = true
 
 [node name="PackageSpawnTimer" type="Timer" parent="."]
