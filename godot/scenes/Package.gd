@@ -12,8 +12,7 @@ func start_timer(time_sec: float, callback: Callable):
 
 func pick_up():
 	visible = false
-	if blue_arrow:
-		blue_arrow.queue_free()
+	blue_arrow.queue_free()
 	$PlayerDetector.set_deferred("monitoring", false)
 	arrow = Arrow.instantiate()
 	arrow.destination = destination
@@ -23,6 +22,6 @@ func _on_player_detected(player):
 	player.collect_package(self)
 
 func do_free() -> void:
-	if arrow:
+	if is_instance_valid(arrow):
 		arrow.queue_free()
 	queue_free()
