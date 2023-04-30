@@ -40,3 +40,9 @@ func set_health(health: int) -> void:
 		var tex: AtlasTexture = child.texture
 		tex.region.position.x = 8 if i < health else 0
 		i += 1
+
+func _on_quit_button_pressed() -> void:
+	get_tree().quit(0)
+
+func _on_restart_button_pressed() -> void:
+	get_tree().reload_current_scene()

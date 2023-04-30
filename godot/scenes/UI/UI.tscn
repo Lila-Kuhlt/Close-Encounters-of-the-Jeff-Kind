@@ -32,19 +32,16 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="Panel" type="Panel" parent="PauseMenu"]
+[node name="Panel" type="PanelContainer" parent="PauseMenu"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 theme = ExtResource("2_enm3v")
 
 [node name="MarginContainer" type="MarginContainer" parent="PauseMenu/Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 theme = ExtResource("2_enm3v")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/Panel/MarginContainer"]
@@ -55,11 +52,19 @@ layout_mode = 2
 text = "Pause"
 horizontal_alignment = 1
 
-[node name="Button" type="Button" parent="PauseMenu/Panel/MarginContainer/VBoxContainer"]
+[node name="ResumeButton" type="Button" parent="PauseMenu/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_enm3v")
 shortcut = SubResource("Shortcut_3wnkl")
 text = "Resume"
+
+[node name="RestartButton" type="Button" parent="PauseMenu/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Restart"
+
+[node name="QuitButton" type="Button" parent="PauseMenu/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Quit"
 
 [node name="GameOver" type="CenterContainer" parent="."]
 process_mode = 2
@@ -97,4 +102,6 @@ Packages delivered:
 {score}"
 horizontal_alignment = 1
 
-[connection signal="pressed" from="PauseMenu/Panel/MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="PauseMenu/Panel/MarginContainer/VBoxContainer/ResumeButton" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="PauseMenu/Panel/MarginContainer/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="PauseMenu/Panel/MarginContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
