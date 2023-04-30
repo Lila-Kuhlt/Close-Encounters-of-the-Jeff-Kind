@@ -4,7 +4,7 @@ extends CharacterBody2D
 
 var direction: Vector2
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	velocity = direction * SPEED
 	move_and_slide()
 
@@ -13,6 +13,6 @@ func _on_player_hit(body):
 	body.hit_player(direction)
 	queue_free()
 
-func _on_building_collision(body):
+func _on_building_collision(_body):
 	# despawn
 	queue_free()

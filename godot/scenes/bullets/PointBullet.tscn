@@ -1,18 +1,5 @@
-[gd_scene load_steps=4 format=3 uid="uid://bujiv5avewejc"]
+[gd_scene load_steps=2 format=3 uid="uid://bujiv5avewejc"]
 
 [ext_resource type="PackedScene" uid="uid://b0pfot8ar77fj" path="res://scenes/bullets/Bullet.tscn" id="1_n6yom"]
-[ext_resource type="Texture2D" uid="uid://b88pju7qnrusy" path="res://assets/small-bullet.png" id="2_tgpf0"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_3obra"]
-radius = 2.0
 
 [node name="PointBullet" instance=ExtResource("1_n6yom")]
-
-[node name="Sprite2D" parent="." index="0"]
-texture = ExtResource("2_tgpf0")
-
-[node name="CollisionShape2D" parent="PlayerHit" index="0"]
-shape = SubResource("CircleShape2D_3obra")
-
-[node name="CollisionShape2D" parent="BuildingCollision" index="0"]
-shape = SubResource("CircleShape2D_3obra")

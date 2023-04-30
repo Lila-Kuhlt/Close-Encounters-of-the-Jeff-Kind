@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/Destination.gd" id="1_lpsnt"]
 [ext_resource type="Texture2D" uid="uid://bff7f24ptjucl" path="res://assets/speech-bubble.png" id="1_yu607"]
-[ext_resource type="PackedScene" path="res://scenes/IconCollectible.tscn" id="2_na4m3"]
+[ext_resource type="PackedScene" uid="uid://dim5by60j84ng" path="res://scenes/IconCollectible.tscn" id="2_na4m3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qrjif"]
 
