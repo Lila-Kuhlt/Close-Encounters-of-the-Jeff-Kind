@@ -12,6 +12,18 @@ events = [SubResource("InputEventAction_t7usk")]
 [node name="UI" type="CanvasLayer" groups=["UI"]]
 script = ExtResource("1_aneth")
 
+[node name="HeartVBox" type="VBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+
+[node name="HeartContainer" type="HBoxContainer" parent="HeartVBox"]
+texture_filter = 1
+layout_mode = 2
+
 [node name="PauseMenu" type="CenterContainer" parent="."]
 process_mode = 2
 visible = false
@@ -84,17 +96,5 @@ text = "You are dead!
 
 Game Over"
 horizontal_alignment = 1
-
-[node name="HeartVBox" type="VBoxContainer" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-
-[node name="HeartContainer" type="HBoxContainer" parent="HeartVBox"]
-texture_filter = 1
-layout_mode = 2
 
 [connection signal="pressed" from="PauseMenu/Panel/MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
