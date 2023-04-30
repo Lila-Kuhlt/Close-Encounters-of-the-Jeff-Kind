@@ -1,0 +1,31 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://bibncf8bjomwi"]
+
+[ext_resource type="Texture2D" uid="uid://do15jbr236n0f" path="res://assets/box-style.png" id="1_1rgfr"]
+[ext_resource type="Texture2D" uid="uid://ch4l54w3xbjiy" path="res://assets/button-box-style.png" id="1_d738b"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0yg82"]
+texture = ExtResource("1_d738b")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+region_rect = Rect2(0, 0, 24, 24)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4n0gg"]
+texture = ExtResource("1_1rgfr")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+region_rect = Rect2(0, 0, 24, 24)
+
+[resource]
+Button/font_sizes/font_size = 12
+Button/styles/normal = SubResource("StyleBoxTexture_0yg82")
+MarginContainer/constants/margin_bottom = 8
+MarginContainer/constants/margin_left = 8
+MarginContainer/constants/margin_right = 8
+MarginContainer/constants/margin_top = 8
+Panel/styles/panel = SubResource("StyleBoxTexture_4n0gg")
