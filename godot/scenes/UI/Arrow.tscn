@@ -13,3 +13,9 @@ offset_bottom = 8.0
 pivot_offset = Vector2(4, 4)
 texture = ExtResource("1_uuu2c")
 stretch_mode = 2
+
+[node name="TimeLabel" type="Label" parent="."]
+offset_right = 26.0
+offset_bottom = 15.0
+theme_override_font_sizes/font_size = 8
+text = "12:34"

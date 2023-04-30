@@ -34,5 +34,12 @@ func _process(_delta: float) -> void:
 	var pos := destination.get_canvas_transform() * destination.position
 	if not rect.has_point(pos):
 		pos = translate_to_inner(pos, rect)
+
 	$Texture.position = pos
 	$Texture.rotation = Vector2(0, -1).angle_to(pos - rect.get_center())
+
+	$TimeLabel.position = pos - Vector2(0, $Texture.size.y * 1.2)
+	if $TimeLabel.position.x + $TimeLabel.size.x > rect.end.x - $Texture.size.x:
+		$TimeLabel.position.x = rect.end.x - $TimeLabel.size.x
+	if $TimeLabel.position.y < $Texture.size.y:
+		$TimeLabel.position.y = $Texture.size.y

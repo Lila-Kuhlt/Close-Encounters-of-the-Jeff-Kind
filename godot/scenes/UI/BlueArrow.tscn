@@ -1,15 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://8v3qdpvasj16"]
+[gd_scene load_steps=3 format=3 uid="uid://cr61cq1ki23bw"]
 
-[ext_resource type="Script" path="res://scenes/UI/Arrow.gd" id="1_i2yqe"]
+[ext_resource type="PackedScene" uid="uid://d4a3qt18fwqnv" path="res://scenes/UI/Arrow.tscn" id="1_ildpv"]
 [ext_resource type="Texture2D" uid="uid://cs4iq5memtgdl" path="res://assets/arrow-blue.png" id="2_vo0k8"]
 
-[node name="BlueArrow" type="CanvasLayer"]
-script = ExtResource("1_i2yqe")
+[node name="BlueArrow" instance=ExtResource("1_ildpv")]
 
-[node name="Texture" type="TextureRect" parent="."]
-texture_filter = 1
-offset_right = 8.0
-offset_bottom = 8.0
-pivot_offset = Vector2(4, 4)
+[node name="Texture" parent="." index="0"]
 texture = ExtResource("2_vo0k8")
-stretch_mode = 2
