@@ -10,14 +10,13 @@ const Bullet = preload("res://scenes/bullets/PointBullet.tscn")
 var direction: Vector2
 var travel_time := 0
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	var viewport := get_viewport()
 	var cam := viewport.get_camera_2d()
 	var vp: Rect2 = Rect2(cam.position - viewport.size * 0.5, viewport.size)
 	var center := vp.get_center()
 	position = rand_edge_point(vp) + vp.position
-	direction = (center - position).normalized()
+	direction = position.direction_to(center)
 
 func _physics_process(delta):
 	var region: Rect2 = $Sprite2D.get_rect()
