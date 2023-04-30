@@ -1,6 +1,5 @@
 extends CharacterBody2D
 
-const Globals = preload("res://src/Globals.gd")
 @export var SPEED = 30
 
 var direction: Vector2
