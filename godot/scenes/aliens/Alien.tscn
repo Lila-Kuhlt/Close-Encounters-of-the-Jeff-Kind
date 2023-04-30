@@ -3,8 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://dxxc4ld0u1jpv" path="res://assets/alien.png" id="1_v4t24"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_beyqa"]
-radius = 2.0
-height = 6.0
+radius = 7.0
+height = 18.0
 
 [node name="Alien" type="CharacterBody2D"]
 texture_filter = 1
