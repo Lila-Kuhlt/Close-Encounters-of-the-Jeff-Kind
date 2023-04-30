@@ -24,7 +24,7 @@ func _physics_process(_delta):
 func _on_timer_timeout():
 	var bullet = Bullet.instantiate()
 	bullet.direction = Vector2.from_angle(x)
-	bullet.rotate(atan2(bullet.direction.y, bullet.direction.x) - PI/2)
+	bullet.rotation = x - PI/2
 	bullet.position = position
 	x += 0.5
 	get_parent().add_child(bullet)
