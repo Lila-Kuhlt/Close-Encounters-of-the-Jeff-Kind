@@ -111,7 +111,7 @@ func spawn_package():
 	package.blue_arrow = arrow
 
 	package.collectible = Globals.get_random_collectible()
-	package.start_timer(20.0, $Jeff._on_package_timeout.bind(package))
+	package.start_timer(0.0, 20.0, $Jeff._on_package_timeout.bind(package))
 	return package
 
 func _on_package_spawn_timer_timeout():

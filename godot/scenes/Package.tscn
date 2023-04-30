@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://noq6fvko5jwt"]
+[gd_scene load_steps=9 format=3 uid="uid://noq6fvko5jwt"]
 
 [ext_resource type="Script" path="res://scenes/Package.gd" id="1_g1yjm"]
 [ext_resource type="Texture2D" uid="uid://n2irus8kabqp" path="res://assets/package.png" id="2_f8cij"]
 [ext_resource type="PackedScene" uid="uid://dim5by60j84ng" path="res://scenes/IconCollectible.tscn" id="3_xgt0x"]
+[ext_resource type="PackedScene" uid="uid://by1k3slytatgp" path="res://scenes/UI/RadialProgressBar.tscn" id="4_be1iq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j0e3u"]
 
@@ -94,5 +95,10 @@ position = Vector2(0, -2)
 libraries = {
 "": SubResource("AnimationLibrary_3xdcr")
 }
+
+[node name="RadialProgressBar" parent="." instance=ExtResource("4_be1iq")]
+visible = false
+radius_outer = 12
+radius_inner = 9
 
 [connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detected"]

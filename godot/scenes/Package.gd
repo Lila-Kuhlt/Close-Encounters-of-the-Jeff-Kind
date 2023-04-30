@@ -17,8 +17,14 @@ func _ready():
 	$AnimationPlayer.play("idle")
 	
 ## Starts the timer with `time_sec` seconds and connects the callback to the `timeout` signal.
-func start_timer(time_sec: float, callback: Callable):
-	get_tree().create_timer(time_sec).timeout.connect(callback)
+func start_timer(time_start: float, time: float, callback: Callable):
+	$RadialProgressBar.value_max = time
+	$RadialProgressBar.value = time - time_start
+	$RadialProgressBar.visible = true
+	
+	var tween := get_tree().create_tween()
+	tween.tween_property($RadialProgressBar, "value", 0, time - time_start)
+	tween.tween_callback(callback)
 
 func pick_up():
 	visible = false

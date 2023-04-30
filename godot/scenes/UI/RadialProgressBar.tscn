@@ -8,7 +8,7 @@ shader = ExtResource("1_wv1rn")
 shader_parameter/color_background = Color(0.3, 0.3, 0.3, 0.8)
 shader_parameter/color_bar = Color(0.8, 0.1, 0.1, 1)
 shader_parameter/progress = 0.5
-shader_parameter/radius_inner = 0.625
+shader_parameter/radius_inner = 0.75
 
 [node name="RadialProgressBar" type="Node2D"]
 script = ExtResource("1_msvgr")
