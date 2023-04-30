@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://528481gmre0a"]
+[gd_scene load_steps=4 format=3 uid="uid://528481gmre0a"]
 
+[ext_resource type="Script" path="res://scenes/aliens/Alien.gd" id="1_cc50j"]
 [ext_resource type="Texture2D" uid="uid://dxxc4ld0u1jpv" path="res://assets/alien.png" id="1_v4t24"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_beyqa"]
@@ -9,6 +10,7 @@ height = 18.0
 [node name="Alien" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 2
+script = ExtResource("1_cc50j")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_v4t24")
