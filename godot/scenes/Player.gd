@@ -68,12 +68,16 @@ func hit_player():
 	if is_stunned or is_invincible:
 		return
 	is_stunned = true
+	$AnimationPlayer.play("hit")
 	$StunTimer.start()
 
 func _on_stun_timer_timeout() -> void:
 	is_invincible = true
 	is_stunned = false
+	$AnimationPlayer.stop()
+	$AnimationPlayer.play("invincible")
 	$InvincibilityTimer.start()
 
 func _on_invincibility_timer_timeout() -> void:
+	$AnimationPlayer.stop()
 	is_invincible = false
