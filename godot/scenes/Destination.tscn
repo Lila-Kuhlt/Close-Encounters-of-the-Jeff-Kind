@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://btkwewx7osipr"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_qrjif"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xwa6t"]
 
 [node name="Destination" type="Node2D"]
 
@@ -9,4 +9,4 @@ collision_layer = 16
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_qrjif")
+shape = SubResource("RectangleShape2D_xwa6t")

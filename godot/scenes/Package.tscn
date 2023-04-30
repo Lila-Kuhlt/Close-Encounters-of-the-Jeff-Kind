@@ -4,8 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://n2irus8kabqp" path="res://assets/package.png" id="2_f8cij"]
 [ext_resource type="Texture2D" uid="uid://cif408mrbg4gc" path="res://assets/collectables.png" id="3_jmste"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_kccmo"]
-radius = 8.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j0e3u"]
 
 [sub_resource type="Animation" id="Animation_cavh4"]
 resource_name = "idle"
@@ -79,7 +78,7 @@ collision_mask = 4
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
-shape = SubResource("CircleShape2D_kccmo")
+shape = SubResource("RectangleShape2D_j0e3u")
 
 [node name="SpritePackage" type="Sprite2D" parent="."]
 texture_filter = 1
