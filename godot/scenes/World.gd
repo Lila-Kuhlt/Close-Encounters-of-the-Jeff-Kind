@@ -4,6 +4,7 @@ const Package = preload("res://scenes/Package.tscn")
 const Ufo = preload("res://scenes/Ufo.tscn")
 const Destination = preload("res://scenes/Destination.tscn")
 const FatAlien = preload("res://scenes/aliens/FatAlien.tscn")
+const FixedAlien = preload("res://scenes/aliens/FixedAlien.tscn")
 
 const PACKAGE_SPAWN_RATE := 6.0
 const PACKAGE_SPAWN_OFFSET := 3.0
@@ -53,8 +54,11 @@ func _ready():
 	populate_walkable_street_tiles()
 	# _init_astar()
 	var alien = FatAlien.instantiate()
-	alien.position = _astar.get_point_position(Vector2i(5, 3))
+	alien.position = _astar.get_point_position(Vector2i(14, 17))
 	add_child(alien)
+	var fixed_alien = FixedAlien.instantiate()
+	fixed_alien.position = _astar.get_point_position(Vector2i(18, 3))
+	add_child(fixed_alien)
 
 func get_areas(layer_name: String) -> Array[TileLocation]:
 	var ts: TileSet = $ObjectTileMap.tile_set
