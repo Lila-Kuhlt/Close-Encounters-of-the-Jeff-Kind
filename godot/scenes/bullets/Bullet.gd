@@ -13,9 +13,9 @@ func _physics_process(_delta: float) -> void:
 	else:
 		queue_free()
 
-func _on_player_hit(body):
+func _on_player_hit(area):
 	# hit player and despawn
-	body.hit_player(direction)
+	area.get_parent().hit_player(direction)
 	queue_free()
 
 func _on_building_collision(_body):

@@ -26,5 +26,5 @@ collision_mask = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BuildingCollision"]
 shape = SubResource("CircleShape2D_lbh06")
 
-[connection signal="body_entered" from="PlayerHit" to="." method="_on_player_hit"]
+[connection signal="area_entered" from="PlayerHit" to="." method="_on_player_hit"]
 [connection signal="body_entered" from="BuildingCollision" to="." method="_on_building_collision"]
