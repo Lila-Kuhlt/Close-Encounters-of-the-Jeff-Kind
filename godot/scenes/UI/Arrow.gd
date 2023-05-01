@@ -4,6 +4,7 @@ var destination: Node2D
 var progress_bar: Node2D
 
 const DESTINATION_MARGIN := 13
+const LEFT_CLIP := 7.0
 
 func translate_to_inner(pos: Vector2, rect: Rect2) -> Vector2:
 	var c := rect.get_center()
@@ -42,6 +43,9 @@ func _process(_delta: float) -> void:
 		pos = translate_to_inner(pos, rect)
 	else:
 		pos -= DESTINATION_MARGIN * dir
+
+	if pos.x < LEFT_CLIP:
+		pos.x = LEFT_CLIP
 
 	$Texture.position = pos
 	$Texture.rotation = Vector2(0, -1).angle_to(dir)
