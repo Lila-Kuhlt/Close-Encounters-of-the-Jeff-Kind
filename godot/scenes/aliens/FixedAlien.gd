@@ -13,6 +13,6 @@ func _on_timer_timeout():
 	bullet2.rotation = bullet2.direction.angle() - PI/2
 	bullet.position = position
 	bullet2.position = position
-	shooting_direction = shooting_direction.rotated(PI/2)
+	shooting_direction = shooting_direction.orthogonal()
 	get_parent().add_child(bullet)
 	get_parent().add_child(bullet2)
