@@ -11,7 +11,7 @@ const PACKAGE_SPAWN_RATE := 20.0
 const PACKAGE_SPAWN_OFFSET := 5.0
 const PACKAGE_TIMEOUT := 40.0
 
-@export var UFO_SPAWN_CHANCE = 1.0
+@export var UFO_SPAWN_CHANCE = 0.5
 
 var package_spawn_areas: Array[Vector2] = []
 var package_destination_areas: Array[Node2D] = []
@@ -59,7 +59,8 @@ func _ready():
 		dest.position = pos
 		dest.collectible = Globals.get_random_collectible() # TODO this should be decided by another custom data layer
 		package_destination_areas.append(dest)
-	start_package_spawn_timer()
+	start_package_spawn_timer(true)
+
 	populate_walkable_street_tiles()
 	# _init_astar()
 	var alien = FatAlien.instantiate()
@@ -91,8 +92,12 @@ func populate_areas(layer_name: String):
 			areas.append(map.map_to_local(area) + loc.center_offset)
 	return areas
 
-func start_package_spawn_timer():
-	var time := randf_range(PACKAGE_SPAWN_RATE - PACKAGE_SPAWN_OFFSET, PACKAGE_SPAWN_RATE + PACKAGE_SPAWN_OFFSET)
+func start_package_spawn_timer(initial := false):
+	var time: float
+	if initial:
+		time = randf_range(0, PACKAGE_SPAWN_OFFSET)
+	else:
+		time = randf_range(PACKAGE_SPAWN_RATE - PACKAGE_SPAWN_OFFSET, PACKAGE_SPAWN_RATE + PACKAGE_SPAWN_OFFSET)
 	$PackageSpawnTimer.start(time)
 
 func spawn_package():

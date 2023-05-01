@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://528481gmre0a"]
+[gd_scene load_steps=5 format=3 uid="uid://528481gmre0a"]
 
 [ext_resource type="Script" path="res://scenes/aliens/Alien.gd" id="1_cc50j"]
 [ext_resource type="Texture2D" uid="uid://dxxc4ld0u1jpv" path="res://assets/alien.png" id="1_v4t24"]
+[ext_resource type="Script" path="res://scenes/aliens/AlienTimer.gd" id="3_n0vsd"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_beyqa"]
 radius = 7.0
@@ -19,4 +20,4 @@ texture = ExtResource("1_v4t24")
 shape = SubResource("CapsuleShape2D_beyqa")
 
 [node name="Timer" type="Timer" parent="."]
-autostart = true
+script = ExtResource("3_n0vsd")
