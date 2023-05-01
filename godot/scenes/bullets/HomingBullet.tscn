@@ -48,7 +48,7 @@ _data = {
 
 [node name="HomingBullet" instance=ExtResource("1_bery2")]
 script = ExtResource("2_cnx2s")
-SPEED = 50.0
+speed = 50.0
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("3_32y20")

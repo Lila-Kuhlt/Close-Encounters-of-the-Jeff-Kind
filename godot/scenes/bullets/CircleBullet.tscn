@@ -5,4 +5,4 @@
 
 [node name="CircleBullet" instance=ExtResource("1_hdywy")]
 script = ExtResource("2_b1nk4")
-SPEED = 10.0
+speed = 10.0
