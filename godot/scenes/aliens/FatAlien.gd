@@ -7,4 +7,7 @@ func _ready() -> void:
 
 func _on_timer_timeout():
 	spawn_bullet(rot_angle)
+	spawn_bullet(rot_angle + PI/2)
+	spawn_bullet(rot_angle + PI)
+	spawn_bullet(rot_angle + 3 * PI/2)
 	rot_angle += 0.5
