@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://c7xru3o3piygv"]
+[gd_scene load_steps=11 format=3 uid="uid://c7xru3o3piygv"]
 
 [ext_resource type="Script" path="res://scenes/Player.gd" id="1_n0o0d"]
 [ext_resource type="Texture2D" uid="uid://bvraqbkf5ijs1" path="res://assets/Jeff.png" id="2_8uldn"]
+[ext_resource type="AudioStream" uid="uid://csymma4020vmv" path="res://assets/sounds/hit.wav" id="3_ynwqt"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yy5ia"]
 radius = 4.0
@@ -107,6 +108,9 @@ one_shot = true
 libraries = {
 "": SubResource("AnimationLibrary_2704f")
 }
+
+[node name="HitSoundPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ynwqt")
 
 [connection signal="area_entered" from="DestinationDetector" to="." method="_on_destination_detector_area_entered"]
 [connection signal="timeout" from="StunTimer" to="." method="_on_stun_timer_timeout"]

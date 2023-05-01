@@ -75,6 +75,7 @@ func _physics_process(_delta):
 	cam.position = position.clamp(Globals.WORLD_BOUNDARY.position + hz, Globals.WORLD_BOUNDARY.end - hz)
 
 func hit_player(direction: Vector2):
+	$HitSoundPlayer.play()
 	if not is_invincible:
 		knockback = direction.normalized() * KNOCKBACK_STRENGTH
 	if is_stunned or is_invincible:
