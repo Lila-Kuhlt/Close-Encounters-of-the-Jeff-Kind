@@ -46,9 +46,6 @@ func rand_edge_point(vp: Rect2) -> Vector2:
 
 	return coord
 
-func mirror_point(point: Vector2, center: Vector2) -> Vector2:
-	return 2 * center - point
-
 func _on_timer_timeout():
 	for alpha in [1, -1]:
 		var bullet = Bullet.instantiate()

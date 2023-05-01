@@ -11,7 +11,7 @@ const PACKAGE_SPAWN_RATE := 20.0
 const PACKAGE_SPAWN_OFFSET := 5.0
 const PACKAGE_TIMEOUT := 40.0
 
-@export var ufo_spawn_chance = 1.0
+@export var UFO_SPAWN_CHANCE = 1.0
 
 var package_spawn_areas: Array[Vector2] = []
 var package_destination_areas: Array[Node2D] = []
@@ -120,7 +120,5 @@ func _on_package_spawn_timer_timeout():
 	start_package_spawn_timer()
 
 func _on_ufo_timer_timeout():
-	if randf_range(0, 1) > ufo_spawn_chance:
-		return
-
-	add_child(Ufo.instantiate())
+	if randf_range(0, 1) <= UFO_SPAWN_CHANCE:
+		add_child(Ufo.instantiate())
