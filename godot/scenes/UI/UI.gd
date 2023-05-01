@@ -67,10 +67,10 @@ func _on_tutorial_close_button_pressed() -> void:
 func go_to_tutorial_page(n) -> void:
 	tutorial_page = n
 	var pages: Control = $Tutorial/PanelContainer/MarginContainer/VBoxContainer/Pages
-	var name: String = "Page%d" % n
+	var page_name: String = "Page%d" % n
 	for _node in pages.get_children():
 		var node: Node = _node
-		if node.name == name:
+		if node.name == page_name:
 			node.show()
 		else:
 			node.hide()
