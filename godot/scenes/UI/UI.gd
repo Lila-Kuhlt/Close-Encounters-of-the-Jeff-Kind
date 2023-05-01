@@ -4,9 +4,18 @@ const Heart = preload("res://scenes/UI/Heart.tscn")
 
 var just_paused := false
 var hearts: Array[TextureRect] = []
+var in_tutorial := true
+
+var tutorial_page := 0
+@onready var tutorial_page_count: int = $Tutorial/PanelContainer/MarginContainer/VBoxContainer/Pages.get_child_count()
+
+func _ready() -> void:
+	get_tree().paused = true
+	in_tutorial = true
+	go_to_tutorial_page(0)
 
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed('pause'):
+	if Input.is_action_just_pressed('pause') and not in_tutorial:
 		if not just_paused:
 			get_tree().paused = true
 			$PauseMenu.show()
@@ -49,3 +58,26 @@ func _on_quit_button_pressed() -> void:
 func _on_restart_button_pressed() -> void:
 	get_tree().reload_current_scene()
 	get_tree().paused = false
+
+func _on_tutorial_close_button_pressed() -> void:
+	in_tutorial = false
+	get_tree().paused = false
+	$Tutorial.hide()
+
+func go_to_tutorial_page(n) -> void:
+	tutorial_page = n
+	var pages: Control = $Tutorial/PanelContainer/MarginContainer/VBoxContainer/Pages
+	var name: String = "Page%d" % n
+	for _node in pages.get_children():
+		var node: Node = _node
+		if node.name == name:
+			node.show()
+		else:
+			node.hide()
+	if n >= tutorial_page_count - 1:
+		$Tutorial/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/NextButton.hide()
+	else:
+		$Tutorial/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/NextButton.show()
+
+func _on_tutorial_next_button_pressed() -> void:
+	go_to_tutorial_page(tutorial_page + 1)

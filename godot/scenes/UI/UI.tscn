@@ -1,13 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://bqwg30od0fmhk"]
+[gd_scene load_steps=8 format=3 uid="uid://bqwg30od0fmhk"]
 
 [ext_resource type="Script" path="res://scenes/UI/UI.gd" id="1_aneth"]
 [ext_resource type="Theme" uid="uid://bwttwsp1fetbo" path="res://assets/Theme.tres" id="2_enm3v"]
+[ext_resource type="Texture2D" uid="uid://botvopj3ghuek" path="res://assets/keybindings.png" id="3_plqga"]
 
 [sub_resource type="InputEventAction" id="InputEventAction_t7usk"]
 action = &"pause"
 
 [sub_resource type="Shortcut" id="Shortcut_3wnkl"]
 events = [SubResource("InputEventAction_t7usk")]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4v0li"]
+atlas = ExtResource("3_plqga")
+region = Rect2(0, 0, 36.9474, 26.4319)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qym86"]
+atlas = ExtResource("3_plqga")
+region = Rect2(39.7696, 6.71643, 24.3235, 14.5941)
 
 [node name="UI" type="CanvasLayer" groups=["UI"]]
 layer = 2
@@ -107,8 +116,98 @@ text = "Restart"
 layout_mode = 2
 text = "Quit"
 
+[node name="Tutorial" type="CenterContainer" parent="."]
+process_mode = 2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_enm3v")
+
+[node name="PanelContainer" type="PanelContainer" parent="Tutorial"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Tutorial/PanelContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Tutorial/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Pages" type="VBoxContainer" parent="Tutorial/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Page0" type="VBoxContainer" parent="Tutorial/PanelContainer/MarginContainer/VBoxContainer/Pages"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="RichTextLabel" parent="Tutorial/PanelContainer/MarginContainer/VBoxContainer/Pages/Page0"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 5
+theme_override_font_sizes/bold_font_size = 8
+theme_override_font_sizes/bold_italics_font_size = 8
+bbcode_enabled = true
+text = "Welcome to [b]Jeff'[/b]s World!
+Your goal is to to stuff lol"
+fit_content = true
+
+[node name="Page1" type="VBoxContainer" parent="Tutorial/PanelContainer/MarginContainer/VBoxContainer/Pages"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Tutorial/PanelContainer/MarginContainer/VBoxContainer/Pages/Page1"]
+layout_mode = 2
+text = "Controls"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Tutorial/PanelContainer/MarginContainer/VBoxContainer/Pages/Page1"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Tutorial/PanelContainer/MarginContainer/VBoxContainer/Pages/Page1/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="Tutorial/PanelContainer/MarginContainer/VBoxContainer/Pages/Page1/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_4v0li")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="Tutorial/PanelContainer/MarginContainer/VBoxContainer/Pages/Page1/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Move Player"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Tutorial/PanelContainer/MarginContainer/VBoxContainer/Pages/Page1/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="Tutorial/PanelContainer/MarginContainer/VBoxContainer/Pages/Page1/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_qym86")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="Tutorial/PanelContainer/MarginContainer/VBoxContainer/Pages/Page1/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Dash"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Tutorial/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="CloseButton" type="Button" parent="Tutorial/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+shortcut = SubResource("Shortcut_3wnkl")
+text = "Close"
+
+[node name="NextButton" type="Button" parent="Tutorial/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Next"
+
 [connection signal="pressed" from="PauseMenu/Panel/MarginContainer/VBoxContainer/ResumeButton" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="PauseMenu/Panel/MarginContainer/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="PauseMenu/Panel/MarginContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="GameOver/Panel/MarginContainer/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="GameOver/Panel/MarginContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="Tutorial/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CloseButton" to="." method="_on_tutorial_close_button_pressed"]
+[connection signal="pressed" from="Tutorial/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/NextButton" to="." method="_on_tutorial_next_button_pressed"]
