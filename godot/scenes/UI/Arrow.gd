@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 var destination: Node2D
+var progress_bar: Node2D
 
 const DESTINATION_MARGIN := 13
 
@@ -32,7 +33,8 @@ func _process(_delta: float) -> void:
 	if not is_instance_valid(destination):
 		return
 	var rect := get_viewport().get_visible_rect()
-	rect.size -= Vector2(8, 8)
+	var margin = progress_bar.radius_outer + 5.0
+	rect.size -= Vector2(margin, margin)
 	var pos: Vector2 = destination.get_canvas_transform() * (destination.position - 0.5 * $Texture.size)
 	var dir := rect.get_center().direction_to(pos)
 
@@ -43,9 +45,5 @@ func _process(_delta: float) -> void:
 
 	$Texture.position = pos
 	$Texture.rotation = Vector2(0, -1).angle_to(dir)
-
-	$TimeLabel.position = pos - Vector2(0, $Texture.size.y * 1.2)
-	if $TimeLabel.position.x + $TimeLabel.size.x > rect.end.x - $Texture.size.x:
-		$TimeLabel.position.x = rect.end.x - $TimeLabel.size.x
-	if $TimeLabel.position.y < $Texture.size.y:
-		$TimeLabel.position.y = $Texture.size.y
+	
+	progress_bar.position = pos + 0.5 * $Texture.size

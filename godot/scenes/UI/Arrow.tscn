@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://d4a3qt18fwqnv"]
+[gd_scene load_steps=4 format=3 uid="uid://d4a3qt18fwqnv"]
 
 [ext_resource type="Texture2D" uid="uid://cyr5bqany6524" path="res://assets/arrow.png" id="1_uuu2c"]
 [ext_resource type="Script" path="res://scenes/UI/Arrow.gd" id="2_bm4v0"]
+[ext_resource type="PackedScene" uid="uid://by1k3slytatgp" path="res://scenes/UI/RadialProgressBar.tscn" id="3_uc835"]
 
 [node name="Arrow" type="CanvasLayer"]
 script = ExtResource("2_bm4v0")
@@ -13,8 +14,4 @@ pivot_offset = Vector2(4, 4)
 texture = ExtResource("1_uuu2c")
 stretch_mode = 2
 
-[node name="TimeLabel" type="Label" parent="."]
-offset_right = 26.0
-offset_bottom = 15.0
-theme_override_font_sizes/font_size = 8
-text = "12:34"
+[node name="RadialProgressBar" parent="." instance=ExtResource("3_uc835")]

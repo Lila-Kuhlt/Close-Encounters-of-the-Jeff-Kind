@@ -1,8 +1,8 @@
 @tool
 extends Node2D
 
-@export var radius_outer := 22: set = set_radius_outer
-@export var radius_inner := 16: set = set_radius_inner
+@export var radius_outer := 9: set = set_radius_outer
+@export var radius_inner := 6: set = set_radius_inner
 @export var color_background := Color(0.3, 0.3, 0.3, 0.8): set = set_color_background
 @export var color_bar := Color(0.8, 0.1, 0.1, 1.0): set = set_color_bar
 
