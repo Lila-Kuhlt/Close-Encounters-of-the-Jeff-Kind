@@ -12,17 +12,19 @@ var Bullet
 @onready var _walkables: Array[Vector2i] = get_parent().walkable_street_tiles
 @onready var target_path: PackedVector2Array = PackedVector2Array([])
 
+@onready var anim_player: AnimationPlayer = get_node('WalkAnimationPlayer') if has_node('WalkAnimationPlayer') else null
+
 func _physics_process(_delta):
 	if target_path.size() < 1:
-		if $WalkAnimationPlayer:
-			$WalkAnimationPlayer.play('idle')
+		if anim_player:
+			anim_player.play('idle')
 		return
 	var old_dist := target_path[0] - position
 	velocity = old_dist.normalized() * MOVEMENT_SPEED
-	if not move_and_slide() and $WalkAnimationPlayer:
-		$WalkAnimationPlayer.play('walk')
-	elif $WalkAnimationPlayer:
-		$WalkAnimationPlayer.play('idle')
+	if not move_and_slide() and anim_player:
+		anim_player.play('walk')
+	elif anim_player:
+		anim_player.play('idle')
 	var distlen := (target_path[0] - position).length()
 	if distlen < 0.01 or distlen >= old_dist.length():
 		target_path = target_path.slice(1)
