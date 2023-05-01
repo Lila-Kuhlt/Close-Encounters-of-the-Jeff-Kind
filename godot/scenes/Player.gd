@@ -46,7 +46,7 @@ func remove_package(package):
 ## This function is called when a package timer reaches 0.
 func _on_package_timeout(package):
 	# check if package was already delivered
-	if is_instance_valid(package):
+	if is_instance_valid(package) and package != null:
 		remove_package(package)
 		lifes = max(lifes - 1, 0)
 		if lifes == 0:
