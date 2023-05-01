@@ -8,8 +8,11 @@
 script = ExtResource("2_bm4v0")
 
 [node name="Texture" type="TextureRect" parent="."]
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 12.0
+offset_bottom = 12.0
+scale = Vector2(2, 2)
 pivot_offset = Vector2(4, 4)
 texture = ExtResource("1_uuu2c")
 stretch_mode = 2
