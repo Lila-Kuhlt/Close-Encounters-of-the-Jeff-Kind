@@ -323,6 +323,7 @@ position = Vector2(400, 260)
 
 [node name="Alien" parent="." instance=ExtResource("10_rhged")]
 position = Vector2(619, 500)
+NUM_BULLETS = 6
 
 [node name="Boundary" type="Control" parent="." groups=["Boundary"]]
 visible = false
@@ -378,6 +379,7 @@ position = Vector2(577, 876)
 
 [node name="ThinAlien2" parent="." instance=ExtResource("10_rhged")]
 position = Vector2(396, 155)
+NUM_BULLETS = 6
 
 [node name="FixedAlien14" parent="." instance=ExtResource("9_eukl8")]
 position = Vector2(281, 410)
@@ -387,15 +389,19 @@ position = Vector2(295, 694)
 
 [node name="ThinAlien3" parent="." instance=ExtResource("10_rhged")]
 position = Vector2(888, 668)
+NUM_BULLETS = 6
 
 [node name="ThinAlien4" parent="." instance=ExtResource("10_rhged")]
 position = Vector2(727, 163)
+NUM_BULLETS = 6
 
 [node name="ThinAlien5" parent="." instance=ExtResource("10_rhged")]
 position = Vector2(726, 309)
+NUM_BULLETS = 6
 
 [node name="ThinAlien6" parent="." instance=ExtResource("10_rhged")]
 position = Vector2(684, 442)
+NUM_BULLETS = 6
 
 [node name="HomieAlien3" parent="." instance=ExtResource("11_m3mrd")]
 position = Vector2(1072, 455)
@@ -408,12 +414,14 @@ position = Vector2(1024, 454)
 
 [node name="ThinAlien7" parent="." instance=ExtResource("10_rhged")]
 position = Vector2(1039, 470)
+NUM_BULLETS = 6
 
 [node name="FixedAlien12" parent="." instance=ExtResource("9_eukl8")]
 position = Vector2(888, 583)
 
 [node name="ThinAlien8" parent="." instance=ExtResource("10_rhged")]
 position = Vector2(597, 1018)
+NUM_BULLETS = 6
 
 [node name="FixedAlien13" parent="." instance=ExtResource("9_eukl8")]
 position = Vector2(413, 1003)
@@ -453,30 +461,39 @@ position = Vector2(546, 287)
 
 [node name="ThinAlien9" parent="." instance=ExtResource("10_rhged")]
 position = Vector2(870, 344)
+NUM_BULLETS = 6
 
 [node name="ThinAlien10" parent="." instance=ExtResource("10_rhged")]
 position = Vector2(808, 216)
+NUM_BULLETS = 6
 
 [node name="ThinAlien11" parent="." instance=ExtResource("10_rhged")]
 position = Vector2(1006, 301)
+NUM_BULLETS = 6
 
 [node name="ThinAlien12" parent="." instance=ExtResource("10_rhged")]
 position = Vector2(808, 337)
+NUM_BULLETS = 6
 
 [node name="ThinAlien13" parent="." instance=ExtResource("10_rhged")]
 position = Vector2(899, 249)
+NUM_BULLETS = 6
 
 [node name="ThinAlien14" parent="." instance=ExtResource("10_rhged")]
 position = Vector2(864, 188)
+NUM_BULLETS = 6
 
 [node name="ThinAlien15" parent="." instance=ExtResource("10_rhged")]
 position = Vector2(999, 396)
+NUM_BULLETS = 6
 
 [node name="ThinAlien16" parent="." instance=ExtResource("10_rhged")]
 position = Vector2(980, 248)
+NUM_BULLETS = 6
 
 [node name="ThinAlien17" parent="." instance=ExtResource("10_rhged")]
 position = Vector2(895, 394)
+NUM_BULLETS = 6
 
 [node name="FatAlien4" parent="." instance=ExtResource("8_od7oq")]
 position = Vector2(787, 262)
