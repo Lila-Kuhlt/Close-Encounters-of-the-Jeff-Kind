@@ -149,7 +149,11 @@ theme_override_font_sizes/bold_font_size = 8
 theme_override_font_sizes/bold_italics_font_size = 8
 bbcode_enabled = true
 text = "Welcome to [b]Jeff'[/b]s World!
-Your goal is to to stuff lol"
+The aliens have taken over the city!
+As the last delivery man it is your
+duty to supply parts to the resistance.
+Therefor collect all appearing packets
+and bring them to their targets in time!"
 fit_content = true
 
 [node name="Page1" type="VBoxContainer" parent="Tutorial/PanelContainer/MarginContainer/VBoxContainer/Pages"]
