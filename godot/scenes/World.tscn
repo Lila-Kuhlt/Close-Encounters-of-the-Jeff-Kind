@@ -303,6 +303,7 @@ layer_0/tile_data = PackedInt32Array(655360, 2, 0, 720896, 2, 0, 786432, 2, 0, 8
 [node name="Jeff" parent="." instance=ExtResource("1_q82cg")]
 y_sort_enabled = true
 position = Vector2(551, 720)
+scale = Vector2(0.75, 0.75)
 
 [node name="UfoTimer" type="Timer" parent="."]
 wait_time = 4.0
@@ -313,6 +314,7 @@ autostart = true
 [node name="UI" parent="." instance=ExtResource("6_th27r")]
 
 [node name="Camera" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
 position_smoothing_enabled = true
 position_smoothing_speed = 7.0
 
