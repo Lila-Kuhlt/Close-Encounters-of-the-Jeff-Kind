@@ -1,10 +1,7 @@
 extends CharacterBody2D
 
-@export var MOVEMENT_SPEED = 15
-@export var MIN_MOVEMENT_RADIUS := 3
-@export var MAX_MOVEMENT_RADIUS := 8
-@export var WALK_CHANCE := 0.2
 @export var NUM_BULLETS := 6
+
 const Bullet = preload("res://scenes/bullets/CircleBullet.tscn")
 
 var shooting_direction := Vector2(1, 0)
