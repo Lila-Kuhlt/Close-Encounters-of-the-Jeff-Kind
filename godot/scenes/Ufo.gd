@@ -15,9 +15,9 @@ func _ready():
 	var vps := viewport.get_visible_rect().size
 	var cam := viewport.get_camera_2d()
 	var vp: Rect2 = Rect2(cam.position - vps * 0.5, vps)
-	var center := vp.get_center()
-	position = rand_edge_point(vp) + vp.position
-	direction = position.direction_to(center)
+	position = rand_edge_point(vp)
+	var end := rand_edge_point(vp)
+	direction = position.direction_to(end)
 
 func _physics_process(delta):
 	var region: Rect2 = $Sprite2D.get_rect()
@@ -44,7 +44,7 @@ func rand_edge_point(vp: Rect2) -> Vector2:
 	elif edge == 3:
 		coord.y = vp.size.y + MARGIN.y
 
-	return coord
+	return coord + vp.position
 
 func _on_timer_timeout():
 	for alpha in [1, -1]:
