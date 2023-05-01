@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b1tk4xkmbn6vb" path="res://assets/ufo.png" id="1_f2kdl"]
 
 [node name="Ufo" type="Node2D"]
+z_index = 1
 script = ExtResource("1_5vabe")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
