@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=3 uid="uid://wse6i0ti1hfg"]
+
+[ext_resource type="Script" path="res://scenes/UI/TitleScreen.gd" id="1_iyysa"]
+
+[node name="TitleScreen" type="CanvasLayer"]
+script = ExtResource("1_iyysa")
+
+[node name="Panel" type="PanelContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Panel"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/CenterContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Traveling Salesman"
+horizontal_alignment = 1
+
+[node name="StartButton" type="Button" parent="Panel/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Start"
+
+[node name="QuitButton" type="Button" parent="Panel/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[connection signal="pressed" from="Panel/CenterContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Panel/CenterContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

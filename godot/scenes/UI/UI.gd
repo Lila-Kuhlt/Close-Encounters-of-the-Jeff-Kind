@@ -39,7 +39,7 @@ func set_health(health: int) -> void:
 		i += 1
 
 func _on_quit_button_pressed() -> void:
-	get_tree().quit(0)
+	Globals.quit_game()
 
 func _on_restart_button_pressed() -> void:
 	get_tree().reload_current_scene()

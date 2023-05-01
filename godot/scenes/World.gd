@@ -48,6 +48,10 @@ class TileLocation:
 		self.center_offset = my_center_offset
 
 func _ready():
+	# initialize WORLD_BOUNDARY
+	var boundary = get_tree().get_first_node_in_group("Boundary")
+	Globals.WORLD_BOUNDARY = Rect2(boundary.position, boundary.size)
+
 	package_spawn_areas = populate_areas("canPackagesSpawn")
 	for pos in populate_areas("canBeDestination"):
 		var dest := Destination.instantiate()
