@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bkxrlf0524qe0"]
+[gd_scene load_steps=29 format=3 uid="uid://bkxrlf0524qe0"]
 
 [ext_resource type="Texture2D" uid="uid://dtljv0yknrayy" path="res://assets/ground-tileset.png" id="1_mf6op"]
 [ext_resource type="Script" path="res://scenes/World.gd" id="1_oh1tc"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://b5delt0ovjk4h" path="res://assets/akw.png" id="10_1trv2"]
 [ext_resource type="PackedScene" uid="uid://btcam1wtsmeun" path="res://scenes/aliens/ThinAlien.tscn" id="10_rhged"]
 [ext_resource type="PackedScene" uid="uid://cqfng4uiyrf4o" path="res://scenes/aliens/HomieAlien.tscn" id="11_m3mrd"]
+[ext_resource type="AudioStream" uid="uid://coefhtdiuute7" path="res://assets/sounds/music.mp3" id="17_hb0e7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_me0c7"]
 resource_name = "ground1"
@@ -532,6 +533,12 @@ position = Vector2(378, 918)
 
 [node name="FatAlien6" parent="." instance=ExtResource("8_od7oq")]
 position = Vector2(411, 845)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_hb0e7")
+volume_db = -15.0
+autoplay = true
+bus = &"Music"
 
 [connection signal="timeout" from="UfoTimer" to="." method="_on_ufo_timer_timeout"]
 [connection signal="timeout" from="PackageSpawnTimer" to="." method="_on_package_spawn_timer_timeout"]

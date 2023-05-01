@@ -77,6 +77,7 @@ func _physics_process(_delta):
 		$Character.texture = keff_tex
 		$GPUParticles2D.restart()
 		$DustFadeAnimationPlayer.play('fade')
+		$DashSoundPlayer.play()
 	if dashing:
 		if not has_input:
 			direction = Vector2(1 if $Character.scale.x < 0 else -1, 0)

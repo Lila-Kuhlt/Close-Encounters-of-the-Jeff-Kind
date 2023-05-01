@@ -17,6 +17,7 @@ autostart = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_7vull")
+volume_db = -15.0
 autoplay = true
 
 [connection signal="timeout" from="BulletTimer" to="." method="_on_timer_timeout"]
