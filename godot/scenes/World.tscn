@@ -322,7 +322,6 @@ position = Vector2(347, 222)
 
 [node name="Alien" parent="." instance=ExtResource("10_rhged")]
 position = Vector2(667, 738)
-NUM_BULLETS = 6
 
 [node name="Boundary" type="Control" parent="." groups=["Boundary"]]
 layout_mode = 3
