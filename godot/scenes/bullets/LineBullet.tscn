@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://scenes/bullets/LineBullet.gd" id="2_yrkyf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2v1jf"]
-size = Vector2(18, 9)
+size = Vector2(16, 9)
 
 [sub_resource type="Animation" id="Animation_djtdq"]
 resource_name = "beamnimation"
