@@ -8,12 +8,15 @@ const MAX_QUEUE_SIZE: int = 5
 const MAX_LIFES: int = 20 if Globals.DEBUG else 3
 const KNOCKBACK_STRENGTH: float = 2
 const KNOCKBACK_ENVELOPE: float = 0.86
+const DASH_FACTOR := 8.0
 
 var package_queue := []
 var lifes := MAX_LIFES
 var packages_delivered := 0
 var is_stunned := false
 var is_invincible := false
+var can_dash := true
+var dashing := false
 var knockback := Vector2(0, 0)
 
 @onready var cam: Camera2D = get_parent().get_node('Camera')
@@ -59,6 +62,15 @@ func _physics_process(_delta):
 	position = position.clamp(Globals.WORLD_BOUNDARY.position, Globals.WORLD_BOUNDARY.end)
 	var direction := Input.get_vector("left", "right", "up", "down")
 	var has_input := direction.x != 0 or direction.y != 0
+	if Input.is_action_just_pressed("dash") and can_dash and (not is_stunned or Globals.DEBUG):
+		can_dash = false
+		$DashCooldownTimer.start()
+		$DashTimer.start()
+		dashing = true
+	if dashing:
+		if not has_input:
+			direction = Vector2(1 if $Character.scale.x < 0 else -1, 0)
+		direction *= DASH_FACTOR
 	if is_stunned and not Globals.DEBUG:
 		direction = Vector2(0, 0)
 	if direction.x > 0:
@@ -69,7 +81,8 @@ func _physics_process(_delta):
 	knockback *= KNOCKBACK_ENVELOPE
 
 	velocity = direction * SPEED
-	$WalkAnimationPlayer.play('walk' if has_input and not move_and_slide() else 'idle')
+	var collided := move_and_slide()
+	$WalkAnimationPlayer.play('walk' if has_input and not collided else 'idle')
 
 	var vp := get_viewport_rect()
 	var hz := vp.size * 0.5
@@ -95,3 +108,9 @@ func _on_stun_timer_timeout() -> void:
 func _on_invincibility_timer_timeout() -> void:
 	$HitAnimationPlayer.stop()
 	is_invincible = false
+
+func _on_dash_cooldown_timer_timeout() -> void:
+	can_dash = true
+
+func _on_dash_timer_timeout() -> void:
+	dashing = false
