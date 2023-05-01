@@ -12,12 +12,17 @@ var travel_time := 0
 
 func _ready():
 	var viewport := get_viewport()
-	var vps := viewport.get_visible_rect().size
 	var cam := viewport.get_camera_2d()
+	var vps := viewport.get_visible_rect().size / cam.zoom
 	var vp: Rect2 = Rect2(cam.position - vps * 0.5, vps)
-	position = rand_edge_point(vp)
-	var end := rand_edge_point(vp)
-	direction = position.direction_to(end)
+
+	# generate random path
+	var edges: Array[int] = [0, 1, 2, 3]
+	var start_edge = sample(edges)
+	position = rand_edge_point(vp, start_edge)
+	edges.erase(start_edge)
+	var end_edge = sample(edges)
+	direction = position.direction_to(rand_edge_point(vp, end_edge))
 
 func _physics_process(delta):
 	var region: Rect2 = $Sprite2D.get_rect()
@@ -30,9 +35,12 @@ func _physics_process(delta):
 	else:
 		queue_free()
 
-func rand_edge_point(vp: Rect2) -> Vector2:
-	var edge: int = randi_range(0,3)
-	var rand := randf_range(0,1)
+func sample(elements: Array):
+	var idx := randi_range(0, elements.size() - 1)
+	return elements[idx]
+
+func rand_edge_point(vp: Rect2, edge: int) -> Vector2:
+	var rand := randf_range(0, 1)
 	var coord := rand * vp.size
 
 	if edge == 0:

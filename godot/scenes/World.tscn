@@ -306,7 +306,7 @@ position = Vector2(326, 278)
 scale = Vector2(0.75, 0.75)
 
 [node name="UfoTimer" type="Timer" parent="."]
-wait_time = 4.0
+wait_time = 8.0
 autostart = true
 
 [node name="PackageSpawnTimer" type="Timer" parent="."]
