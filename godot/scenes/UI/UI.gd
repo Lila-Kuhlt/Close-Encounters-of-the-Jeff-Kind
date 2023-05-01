@@ -74,10 +74,14 @@ func go_to_tutorial_page(n) -> void:
 			node.show()
 		else:
 			node.hide()
+	var next_button = $Tutorial/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/NextButton
+	var close_button = $Tutorial/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CloseButton
 	if n >= tutorial_page_count - 1:
-		$Tutorial/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/NextButton.hide()
+		next_button.hide()
+		close_button.grab_focus()
 	else:
-		$Tutorial/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/NextButton.show()
+		next_button.show()
+		next_button.grab_focus()
 
 func _on_tutorial_next_button_pressed() -> void:
 	go_to_tutorial_page(tutorial_page + 1)
