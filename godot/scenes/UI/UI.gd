@@ -62,6 +62,7 @@ func _on_quit_button_pressed() -> void:
 func _on_restart_button_pressed() -> void:
 	get_tree().reload_current_scene()
 	get_tree().paused = false
+	Globals.NO_TUTORIAL = true
 
 func _on_tutorial_close_button_pressed() -> void:
 	in_tutorial = false
