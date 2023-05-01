@@ -132,6 +132,7 @@ grow_vertical = 2
 theme = ExtResource("2_enm3v")
 
 [node name="PanelContainer" type="PanelContainer" parent="Tutorial"]
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="Tutorial/PanelContainer"]
@@ -203,6 +204,7 @@ size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="Tutorial/PanelContainer/MarginContainer/VBoxContainer/Pages/Page2"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 10
 text = "Gameplay"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Tutorial/PanelContainer/MarginContainer/VBoxContainer/Pages/Page2"]
@@ -239,12 +241,13 @@ text = "delivery destination"
 
 [node name="HSeparator" type="HSeparator" parent="Tutorial/PanelContainer/MarginContainer/VBoxContainer/Pages/Page2"]
 layout_mode = 2
+theme_override_constants/separation = 2
 
 [node name="Label2" type="RichTextLabel" parent="Tutorial/PanelContainer/MarginContainer/VBoxContainer/Pages/Page2"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_font_sizes/normal_font_size = 8
-theme_override_font_sizes/bold_font_size = 9
+theme_override_font_sizes/normal_font_size = 6
+theme_override_font_sizes/bold_font_size = 8
 bbcode_enabled = true
 text = "When you don't deliver a package in time you lose a life. Getting hit will just stun you.
 [b]Pro Tip[/b]: You are invincible while you dash."
