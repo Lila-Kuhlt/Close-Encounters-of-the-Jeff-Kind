@@ -14,10 +14,15 @@ var Bullet
 
 func _physics_process(_delta):
 	if target_path.size() < 1:
+		if $WalkAnimationPlayer:
+			$WalkAnimationPlayer.play('idle')
 		return
 	var old_dist := target_path[0] - position
 	velocity = old_dist.normalized() * MOVEMENT_SPEED
-	move_and_slide()
+	if not move_and_slide() and $WalkAnimationPlayer:
+		$WalkAnimationPlayer.play('walk')
+	elif $WalkAnimationPlayer:
+		$WalkAnimationPlayer.play('idle')
 	var distlen := (target_path[0] - position).length()
 	if distlen < 0.01 or distlen >= old_dist.length():
 		target_path = target_path.slice(1)
