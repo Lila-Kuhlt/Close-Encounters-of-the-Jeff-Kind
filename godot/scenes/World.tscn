@@ -314,7 +314,7 @@ autostart = true
 [node name="UI" parent="." instance=ExtResource("6_th27r")]
 
 [node name="Camera" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
+position = Vector2(326, 278)
 position_smoothing_enabled = true
 position_smoothing_speed = 7.0
 
