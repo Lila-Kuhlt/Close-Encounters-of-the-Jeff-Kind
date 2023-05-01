@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c7xru3o3piygv"]
+[gd_scene load_steps=15 format=3 uid="uid://c7xru3o3piygv"]
 
 [ext_resource type="Script" path="res://scenes/Player.gd" id="1_n0o0d"]
 [ext_resource type="Texture2D" uid="uid://bvraqbkf5ijs1" path="res://assets/Jeff.png" id="2_8uldn"]
@@ -71,6 +71,59 @@ _data = {
 "invincible": SubResource("Animation_t5nj7")
 }
 
+[sub_resource type="Animation" id="Animation_m34xj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Character:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_ee4f6"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Character:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_l8ky0"]
+resource_name = "walk"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Character:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_57kes"]
+_data = {
+"RESET": SubResource("Animation_m34xj"),
+"idle": SubResource("Animation_ee4f6"),
+"walk": SubResource("Animation_l8ky0")
+}
+
 [node name="Jeff" type="CharacterBody2D"]
 collision_layer = 5
 motion_mode = 1
@@ -81,6 +134,8 @@ shape = SubResource("CapsuleShape2D_yy5ia")
 
 [node name="Character" type="Sprite2D" parent="."]
 texture = ExtResource("2_8uldn")
+hframes = 5
+frame = 1
 
 [node name="HitBox" type="Area2D" parent="."]
 collision_layer = 5
@@ -104,9 +159,14 @@ one_shot = true
 wait_time = 1.2
 one_shot = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="HitAnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_2704f")
+}
+
+[node name="WalkAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_57kes")
 }
 
 [node name="HitSoundPlayer" type="AudioStreamPlayer" parent="."]

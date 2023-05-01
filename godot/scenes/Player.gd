@@ -58,6 +58,7 @@ func _on_destination_detector_area_entered(area):
 func _physics_process(_delta):
 	position = position.clamp(Globals.WORLD_BOUNDARY.position, Globals.WORLD_BOUNDARY.end)
 	var direction := Input.get_vector("left", "right", "up", "down")
+	var has_input := direction.x != 0 or direction.y != 0
 	if is_stunned and not Globals.DEBUG:
 		direction = Vector2(0, 0)
 	if direction.x > 0:
@@ -68,7 +69,7 @@ func _physics_process(_delta):
 	knockback *= KNOCKBACK_ENVELOPE
 
 	velocity = direction * SPEED
-	move_and_slide()
+	$WalkAnimationPlayer.play('walk' if has_input and not move_and_slide() else 'idle')
 
 	var vp := get_viewport_rect()
 	var hz := vp.size * 0.5
@@ -81,16 +82,16 @@ func hit_player(direction: Vector2):
 	if is_stunned or is_invincible:
 		return
 	is_stunned = true
-	$AnimationPlayer.play("hit")
+	$HitAnimationPlayer.play("hit")
 	$StunTimer.start()
 
 func _on_stun_timer_timeout() -> void:
 	is_invincible = true
 	is_stunned = false
-	$AnimationPlayer.stop()
-	$AnimationPlayer.play("invincible")
+	$HitAnimationPlayer.stop()
+	$HitAnimationPlayer.play("invincible")
 	$InvincibilityTimer.start()
 
 func _on_invincibility_timer_timeout() -> void:
-	$AnimationPlayer.stop()
+	$HitAnimationPlayer.stop()
 	is_invincible = false
