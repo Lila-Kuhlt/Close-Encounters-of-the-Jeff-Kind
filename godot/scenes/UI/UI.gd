@@ -10,6 +10,7 @@ func _process(_delta: float) -> void:
 		if not just_paused:
 			get_tree().paused = true
 			$PauseMenu.show()
+			$PauseMenu/Panel/MarginContainer/VBoxContainer/ResumeButton.grab_focus()
 	else:
 		just_paused = false
 
@@ -23,6 +24,7 @@ func trigger_game_over(score: int) -> void:
 	var game_over_label = $GameOver/Panel/MarginContainer/VBoxContainer/Label
 	game_over_label.text = game_over_label.text.format({"score": score})
 	$GameOver.show()
+	$GameOver/Panel/MarginContainer/VBoxContainer/RestartButton.grab_focus()
 
 func set_max_health(health: int) -> void:
 	for i in range(health):
