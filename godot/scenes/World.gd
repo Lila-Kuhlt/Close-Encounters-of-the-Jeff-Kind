@@ -57,7 +57,6 @@ func _ready():
 		var dest := Destination.instantiate()
 		add_child(dest)
 		dest.position = pos
-		dest.collectible = Globals.get_random_collectible() # TODO this should be decided by another custom data layer
 		package_destination_areas.append(dest)
 	start_package_spawn_timer(true)
 
@@ -121,6 +120,7 @@ func spawn_package():
 	package.blue_arrow = arrow
 
 	package.collectible = Globals.get_random_collectible()
+	package.destination.add_awaiting_package(package)
 	package.start_timer(0.0, PACKAGE_TIMEOUT, $Jeff._on_package_timeout.bind(package))
 	return package
 

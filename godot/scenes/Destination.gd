@@ -1,11 +1,22 @@
 @tool
 extends Node2D
 
-@export var collectible: Globals.Collectible: set = set_collectible
-func set_collectible(v: Globals.Collectible):
-	collectible = v
-	$TextureSpeechBubble/IconCollectible.collectible = collectible
-	
+var awaiting_packages := []
+
 func _ready():
-	set_collectible(collectible)
 	$AnimationPlayer.play("idle")
+
+func add_awaiting_package(package):
+	if awaiting_packages.is_empty():
+		$TextureSpeechBubble/IconCollectible.collectible = package.collectible
+		$TextureSpeechBubble.show()
+		$AnimationPlayer.play("idle")
+	awaiting_packages.append(package)
+
+func remove_awaiting_package(package):
+	print(awaiting_packages)
+	awaiting_packages.erase(package)
+	print(awaiting_packages)
+	if awaiting_packages.is_empty():
+		$TextureSpeechBubble.hide()
+		$AnimationPlayer.stop()

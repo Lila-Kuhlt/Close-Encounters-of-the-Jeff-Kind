@@ -45,6 +45,7 @@ func _on_player_detected(player):
 	player.collect_package(self)
 
 func do_free() -> void:
+	destination.remove_awaiting_package(self)
 	if is_instance_valid(arrow):
 		arrow.queue_free()
 	if is_instance_valid(blue_arrow):

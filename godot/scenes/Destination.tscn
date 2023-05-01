@@ -48,6 +48,7 @@ _data = {
 script = ExtResource("1_lpsnt")
 
 [node name="TextureSpeechBubble" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(10, -16)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_yu607")
