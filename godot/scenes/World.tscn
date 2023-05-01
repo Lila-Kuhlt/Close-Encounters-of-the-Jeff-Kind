@@ -161,6 +161,7 @@ texture_region_size = Vector2i(8, 8)
 2:0/0 = 0
 2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 2:0/0/physics_layer_0/angular_velocity = 0.0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, -4, 4, 4, 4, 4, -4)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oy2wy"]
 resource_name = "Skyscraper"
@@ -252,10 +253,12 @@ texture = ExtResource("2_gcg03")
 0:1/0/texture_origin = Vector2i(-4, 4)
 0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:1/0/physics_layer_0/angular_velocity = 0.0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3, 4, 11, 4, 11, -11, -3, -11)
 0:2/0 = 0
 0:2/0/texture_origin = Vector2i(-4, 4)
 0:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:2/0/physics_layer_0/angular_velocity = 0.0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3, 4, -3, -11, 11, -11, 11, 4)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uynuj"]
 resource_name = "Traffic lights"
@@ -313,6 +316,7 @@ texture = ExtResource("10_1trv2")
 0:0/0/texture_origin = Vector2i(-4, 4)
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, 4, -4, -1, 12, -1, 12, 4)
 
 [sub_resource type="TileSet" id="TileSet_0busg"]
 tile_size = Vector2i(8, 8)
