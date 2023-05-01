@@ -46,6 +46,8 @@ func _process(_delta: float) -> void:
 
 	if pos.x < LEFT_CLIP:
 		pos.x = LEFT_CLIP
+	if pos.y < LEFT_CLIP:
+		pos.y = LEFT_CLIP
 
 	$Texture.position = pos
 	$Texture.rotation = Vector2(0, -1).angle_to(dir)
