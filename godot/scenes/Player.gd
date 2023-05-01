@@ -59,6 +59,8 @@ func _on_destination_detector_area_entered(area):
 	for package in package_queue:
 		if package.destination == dest:
 			delivered_packages.append(package)
+	if len(delivered_packages) > 0:
+		$PackageDeliveredSoundPlayer.play()
 	for package in delivered_packages:
 		remove_package(package)
 		packages_delivered += 1
