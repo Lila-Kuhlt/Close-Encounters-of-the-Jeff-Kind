@@ -92,9 +92,11 @@ func _physics_process(_delta):
 	var collided := move_and_slide()
 	$WalkAnimationPlayer.play('walk' if has_input and not collided else 'idle')
 
-	var vp := get_viewport_rect()
-	var hz := vp.size * 0.5
-	cam.position = position.clamp(Globals.WORLD_BOUNDARY.position + hz, Globals.WORLD_BOUNDARY.end - hz)
+	var vp := get_viewport()
+	var off := 0.5 * vp.get_visible_rect().size / vp.get_camera_2d().zoom
+	cam.position = position.clamp(
+		Globals.WORLD_BOUNDARY.position + off,
+		Globals.WORLD_BOUNDARY.end - off)
 
 func hit_player(direction: Vector2):
 	$HitSoundPlayer.play()
