@@ -22,6 +22,8 @@ var dashing := false
 var knockback := Vector2(0, 0)
 
 @onready var cam: Camera2D = get_parent().get_node('Camera')
+@onready var jeff_tex: Texture2D = load("res://assets/Jeff.png")
+@onready var keff_tex: Texture2D = load("res://assets/Keff.png")
 
 func _ready():
 	UI.set_max_health(MAX_LIFES)
@@ -72,6 +74,7 @@ func _physics_process(_delta):
 		$DashTimer.start()
 		dashing = true
 		$HitBox/CollisionShape2D.disabled = true
+		$Character.texture = keff_tex
 	if dashing:
 		if not has_input:
 			direction = Vector2(1 if $Character.scale.x < 0 else -1, 0)
@@ -116,6 +119,7 @@ func _on_invincibility_timer_timeout() -> void:
 
 func _on_dash_cooldown_timer_timeout() -> void:
 	can_dash = true
+	$Character.texture = jeff_tex
 
 func _on_dash_timer_timeout() -> void:
 	dashing = false
