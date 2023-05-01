@@ -338,7 +338,6 @@ autostart = true
 [node name="PackageSpawnTimer" type="Timer" parent="."]
 
 [node name="UI" parent="." instance=ExtResource("6_th27r")]
-visible = false
 
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2(496, 537)
