@@ -7,8 +7,9 @@ const FatAlien = preload("res://scenes/aliens/FatAlien.tscn")
 const FixedAlien = preload("res://scenes/aliens/FixedAlien.tscn")
 const BlueArrow = preload("res://scenes/UI/BlueArrow.tscn")
 
-const PACKAGE_SPAWN_RATE := 6.0
-const PACKAGE_SPAWN_OFFSET := 3.0
+const PACKAGE_SPAWN_RATE := 20.0
+const PACKAGE_SPAWN_OFFSET := 5.0
+const PACKAGE_TIMEOUT := 40.0
 
 @export var ufo_spawn_chance = 1.0
 
@@ -111,7 +112,7 @@ func spawn_package():
 	package.blue_arrow = arrow
 
 	package.collectible = Globals.get_random_collectible()
-	package.start_timer(0.0, 20.0, $Jeff._on_package_timeout.bind(package))
+	package.start_timer(0.0, PACKAGE_TIMEOUT, $Jeff._on_package_timeout.bind(package))
 	return package
 
 func _on_package_spawn_timer_timeout():
