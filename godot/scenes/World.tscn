@@ -313,6 +313,8 @@ autostart = true
 [node name="UI" parent="." instance=ExtResource("6_th27r")]
 
 [node name="Camera" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+position_smoothing_speed = 7.0
 
 [node name="FatAlien" parent="." instance=ExtResource("8_od7oq")]
 position = Vector2(409, 216)

@@ -8,7 +8,7 @@ const MAX_QUEUE_SIZE: int = 5
 const MAX_LIFES: int = 20 if Globals.DEBUG else 3
 const KNOCKBACK_STRENGTH: float = 2
 const KNOCKBACK_ENVELOPE: float = 0.86
-const DASH_FACTOR := 8.0
+const DASH_FACTOR := 4.0
 
 var package_queue := []
 var lifes := MAX_LIFES
@@ -67,6 +67,7 @@ func _physics_process(_delta):
 		$DashCooldownTimer.start()
 		$DashTimer.start()
 		dashing = true
+		$HitBox/CollisionShape2D.disabled = true
 	if dashing:
 		if not has_input:
 			direction = Vector2(1 if $Character.scale.x < 0 else -1, 0)
@@ -114,3 +115,4 @@ func _on_dash_cooldown_timer_timeout() -> void:
 
 func _on_dash_timer_timeout() -> void:
 	dashing = false
+	$HitBox/CollisionShape2D.disabled = false
