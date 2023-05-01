@@ -20,7 +20,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="Panel/CenterContainer/VBoxContainer"]
 layout_mode = 2
-text = "Traveling Salesman"
+text = "Close Encounters of the Jeff Kind"
 horizontal_alignment = 1
 
 [node name="StartButton" type="Button" parent="Panel/CenterContainer/VBoxContainer"]
