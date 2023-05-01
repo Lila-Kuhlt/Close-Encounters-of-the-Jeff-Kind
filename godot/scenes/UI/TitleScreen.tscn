@@ -14,6 +14,21 @@ outline_color = Color(0, 0, 0, 1)
 shadow_size = 2
 shadow_color = Color(0, 0, 0, 0.815686)
 
+[sub_resource type="Animation" id="Animation_rxnel"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel/CenterContainer/VBoxContainer/VBoxContainer/Label:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.10472]
+}
+
 [sub_resource type="Animation" id="Animation_76nsf"]
 resource_name = "title_rotate"
 length = 4.0
@@ -29,21 +44,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [-0.10472, 0.10472]
-}
-
-[sub_resource type="Animation" id="Animation_rxnel"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Panel/CenterContainer/VBoxContainer/VBoxContainer/Label:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-0.10472]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yaltc"]
@@ -92,6 +92,12 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "Start"
 
+[node name="StartButton2" type="Button" parent="Panel/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Start Without Tutorial"
+
 [node name="QuitButton" type="Button" parent="Panel/CenterContainer/VBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
@@ -104,4 +110,5 @@ libraries = {
 }
 
 [connection signal="pressed" from="Panel/CenterContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Panel/CenterContainer/VBoxContainer/StartButton2" to="." method="_on_start_button_2_pressed"]
 [connection signal="pressed" from="Panel/CenterContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

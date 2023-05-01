@@ -3,6 +3,7 @@ extends Node
 const DEBUG: bool = true
 
 var WORLD_BOUNDARY: Rect2
+var NO_TUTORIAL: bool = false
 
 enum Collectible {
 	MEDI_PACK, WEAPON, ALIEN_MEAT

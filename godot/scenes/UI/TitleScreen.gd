@@ -13,3 +13,8 @@ func _on_start_button_pressed():
 
 func _on_quit_button_pressed():
 	Globals.quit_game()
+
+
+func _on_start_button_2_pressed() -> void:
+	Globals.NO_TUTORIAL = true
+	_on_start_button_pressed()

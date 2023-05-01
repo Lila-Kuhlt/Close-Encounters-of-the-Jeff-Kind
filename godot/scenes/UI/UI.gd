@@ -10,6 +10,10 @@ var tutorial_page := 0
 @onready var tutorial_page_count: int = $Tutorial/PanelContainer/MarginContainer/VBoxContainer/Pages.get_child_count()
 
 func _ready() -> void:
+	if Globals.NO_TUTORIAL:
+		in_tutorial = false
+		$Tutorial.hide()
+		return
 	get_tree().paused = true
 	in_tutorial = true
 	go_to_tutorial_page(0)
