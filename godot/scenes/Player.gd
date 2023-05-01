@@ -10,6 +10,8 @@ const KNOCKBACK_STRENGTH: float = 2
 const KNOCKBACK_ENVELOPE: float = 0.86
 const DASH_FACTOR := 4.0
 
+@onready var UI = get_parent().get_node("UI")
+
 var package_queue := []
 var lifes := MAX_LIFES
 var packages_delivered := 0
@@ -22,7 +24,8 @@ var knockback := Vector2(0, 0)
 @onready var cam: Camera2D = get_parent().get_node('Camera')
 
 func _ready():
-	get_parent().get_node("UI").set_max_health(MAX_LIFES)
+	UI.set_max_health(MAX_LIFES)
+	UI.set_score(packages_delivered)
 
 ## Tries to add a package to the queue and returns wether the package could be added.
 func collect_package(package) -> bool:
@@ -45,8 +48,8 @@ func _on_package_timeout(package):
 		remove_package(package)
 		lifes = max(lifes - 1, 0)
 		if lifes == 0:
-			get_parent().get_node("UI").trigger_game_over(packages_delivered)
-		get_parent().get_node("UI").set_health(lifes)
+			UI.trigger_game_over(packages_delivered)
+		UI.set_health(lifes)
 
 func _on_destination_detector_area_entered(area):
 	var dest = area.get_parent()
@@ -57,6 +60,7 @@ func _on_destination_detector_area_entered(area):
 	for package in delivered_packages:
 		remove_package(package)
 		packages_delivered += 1
+		UI.set_score(packages_delivered)
 
 func _physics_process(_delta):
 	position = position.clamp(Globals.WORLD_BOUNDARY.position, Globals.WORLD_BOUNDARY.end)

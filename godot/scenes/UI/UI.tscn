@@ -13,7 +13,7 @@ events = [SubResource("InputEventAction_t7usk")]
 layer = 2
 script = ExtResource("1_aneth")
 
-[node name="HeartVBox" type="VBoxContainer" parent="."]
+[node name="VBox" type="VBoxContainer" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -21,8 +21,12 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 
-[node name="HeartContainer" type="HBoxContainer" parent="HeartVBox"]
+[node name="HeartContainer" type="HBoxContainer" parent="VBox"]
 layout_mode = 2
+
+[node name="Label" type="Label" parent="VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 7
 
 [node name="PauseMenu" type="CenterContainer" parent="."]
 process_mode = 2
@@ -93,8 +97,7 @@ theme_override_colors/font_color = Color(0.729412, 0, 0, 1)
 text = "You are dead!
 Game Over
 
-Packages delivered:
-{score}"
+Score: {score}"
 horizontal_alignment = 1
 
 [node name="RestartButton" type="Button" parent="GameOver/Panel/MarginContainer/VBoxContainer"]

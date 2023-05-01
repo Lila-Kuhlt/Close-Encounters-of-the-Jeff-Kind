@@ -27,7 +27,7 @@ func trigger_game_over(score: int) -> void:
 func set_max_health(health: int) -> void:
 	for i in range(health):
 		var heart: TextureRect = Heart.instantiate()
-		$HeartVBox/HeartContainer.add_child(heart)
+		$VBox/HeartContainer.add_child(heart)
 		hearts.append(heart)
 	set_health(health)
 
@@ -37,6 +37,9 @@ func set_health(health: int) -> void:
 		var tex: AtlasTexture = child.texture
 		tex.region.position.x = 8 if i < health else 0
 		i += 1
+
+func set_score(score: int) -> void:
+	$VBox/Label.text = "Score: {0}".format([score])
 
 func _on_quit_button_pressed() -> void:
 	Globals.quit_game()
