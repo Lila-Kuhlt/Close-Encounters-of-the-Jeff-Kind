@@ -9,7 +9,7 @@ const BlueArrow = preload("res://scenes/UI/BlueArrow.tscn")
 
 const PACKAGE_SPAWN_RATE := 40.0
 const PACKAGE_SPAWN_OFFSET := 10.0
-const PACKAGE_TIMEOUT := 120.0
+const PACKAGE_TIMEOUT := 105.0
 
 @export var UFO_SPAWN_CHANCE = 0.5
 
@@ -61,13 +61,10 @@ func _ready():
 	start_package_spawn_timer(true)
 
 	populate_walkable_street_tiles()
-	# _init_astar()
-	var alien = FatAlien.instantiate()
-	alien.position = _astar.get_point_position(Vector2i(14, 17))
-	# add_child(alien)
-	var fixed_alien = FixedAlien.instantiate()
-	fixed_alien.position = _astar.get_point_position(Vector2i(18, 3))
-	# add_child(fixed_alien)
+
+func _process(_delta):
+	if get_tree().get_nodes_in_group("Package").is_empty() and $PackageSpawnTimer.wait_time > 1.0:
+		spawn_package()
 
 func get_areas(layer_name: String) -> Array[TileLocation]:
 	var ts: TileSet = $ObjectTileMap.tile_set

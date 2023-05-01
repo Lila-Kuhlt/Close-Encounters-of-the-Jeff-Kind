@@ -69,7 +69,7 @@ _data = {
 "idle": SubResource("Animation_cavh4")
 }
 
-[node name="Package" type="Node2D"]
+[node name="Package" type="Node2D" groups=["Package"]]
 script = ExtResource("1_g1yjm")
 
 [node name="PlayerDetector" type="Area2D" parent="."]
