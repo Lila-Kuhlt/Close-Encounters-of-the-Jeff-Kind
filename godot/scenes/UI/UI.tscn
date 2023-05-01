@@ -69,6 +69,7 @@ horizontal_alignment = 1
 layout_mode = 2
 theme = ExtResource("2_enm3v")
 shortcut = SubResource("Shortcut_3wnkl")
+shortcut_in_tooltip = false
 text = "Resume"
 
 [node name="RestartButton" type="Button" parent="PauseMenu/Panel/MarginContainer/VBoxContainer"]
@@ -110,6 +111,7 @@ horizontal_alignment = 1
 
 [node name="RestartButton" type="Button" parent="GameOver/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
+shortcut_in_tooltip = false
 text = "Restart"
 
 [node name="QuitButton" type="Button" parent="GameOver/Panel/MarginContainer/VBoxContainer"]
@@ -202,6 +204,7 @@ alignment = 1
 [node name="CloseButton" type="Button" parent="Tutorial/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 shortcut = SubResource("Shortcut_3wnkl")
+shortcut_in_tooltip = false
 text = "Close"
 
 [node name="NextButton" type="Button" parent="Tutorial/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
