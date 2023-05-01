@@ -9,7 +9,7 @@ const BlueArrow = preload("res://scenes/UI/BlueArrow.tscn")
 
 const PACKAGE_SPAWN_RATE := 20.0
 const PACKAGE_SPAWN_OFFSET := 5.0
-const PACKAGE_TIMEOUT := 40.0
+const PACKAGE_TIMEOUT := 60.0
 
 @export var UFO_SPAWN_CHANCE = 0.5
 
