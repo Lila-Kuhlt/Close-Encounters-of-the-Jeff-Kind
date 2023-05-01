@@ -1,7 +1,7 @@
 extends Node2D
 
 const MARGIN := Vector2(10, 10)
-const SPEED: float = 100
+const SPEED: float = 200
 const BULLET_SPEED: float = 1
 const MAX_TRAVEL_TIME := 1000
 
@@ -12,8 +12,9 @@ var travel_time := 0
 
 func _ready():
 	var viewport := get_viewport()
+	var vps := viewport.get_visible_rect().size
 	var cam := viewport.get_camera_2d()
-	var vp: Rect2 = Rect2(cam.position - viewport.size * 0.5, viewport.size)
+	var vp: Rect2 = Rect2(cam.position - vps * 0.5, vps)
 	var center := vp.get_center()
 	position = rand_edge_point(vp) + vp.position
 	direction = position.direction_to(center)
