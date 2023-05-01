@@ -75,6 +75,8 @@ func _physics_process(_delta):
 		dashing = true
 		$HitBox/CollisionShape2D.disabled = true
 		$Character.texture = keff_tex
+		$GPUParticles2D.restart()
+		$DustFadeAnimationPlayer.play('fade')
 	if dashing:
 		if not has_input:
 			direction = Vector2(1 if $Character.scale.x < 0 else -1, 0)

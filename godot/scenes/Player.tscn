@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://c7xru3o3piygv"]
+[gd_scene load_steps=20 format=3 uid="uid://c7xru3o3piygv"]
 
 [ext_resource type="Script" path="res://scenes/Player.gd" id="1_n0o0d"]
 [ext_resource type="Texture2D" uid="uid://bvraqbkf5ijs1" path="res://assets/Jeff.png" id="2_8uldn"]
 [ext_resource type="AudioStream" uid="uid://csymma4020vmv" path="res://assets/sounds/hit.wav" id="3_ynwqt"]
+[ext_resource type="Texture2D" uid="uid://dr4vy3kdorlx1" path="res://assets/dust-cloud-particle.png" id="4_1pus1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gdro1"]
 size = Vector2(7, 8)
@@ -124,6 +125,61 @@ _data = {
 "walk": SubResource("Animation_l8ky0")
 }
 
+[sub_resource type="Animation" id="Animation_ob3x0"]
+resource_name = "fade"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.709804), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_nheg1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.709804)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_blxem"]
+_data = {
+"RESET": SubResource("Animation_nheg1"),
+"fade": SubResource("Animation_ob3x0")
+}
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_abkiw"]
+emission_shape = 1
+emission_sphere_radius = 15.0
+particle_flag_disable_z = true
+spread = 74.66
+flatness = 0.57
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 8.0
+initial_velocity_max = 16.0
+angular_velocity_min = -12.0
+angular_velocity_max = 12.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+damping_min = 1.0
+damping_max = 2.0
+angle_max = 360.0
+scale_min = 0.2
+
 [node name="Jeff" type="CharacterBody2D"]
 collision_layer = 5
 motion_mode = 1
@@ -178,8 +234,23 @@ libraries = {
 "": SubResource("AnimationLibrary_57kes")
 }
 
+[node name="DustFadeAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_blxem")
+}
+
 [node name="HitSoundPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_ynwqt")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+modulate = Color(1, 1, 1, 0.709804)
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_abkiw")
+texture = ExtResource("4_1pus1")
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
 
 [connection signal="area_entered" from="DestinationDetector" to="." method="_on_destination_detector_area_entered"]
 [connection signal="timeout" from="StunTimer" to="." method="_on_stun_timer_timeout"]
