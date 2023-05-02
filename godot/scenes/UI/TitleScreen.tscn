@@ -76,15 +76,19 @@ layout_mode = 2
 [node name="Label" type="Label" parent="Panel/CenterContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 offset_left = -66.0
-offset_top = -35.0
 offset_right = 186.0
-offset_bottom = -9.0
+offset_bottom = 26.0
 rotation = -0.10472
 pivot_offset = Vector2(126, 26)
 theme_override_colors/font_color = Color(0.415686, 0.0431373, 0.721569, 1)
 text = "Close Encounters of the Jeff Kind"
 label_settings = SubResource("LabelSettings_xdhit")
 horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Panel/CenterContainer/VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_constants/separation = 30
 
 [node name="StartButton" type="Button" parent="Panel/CenterContainer/VBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
