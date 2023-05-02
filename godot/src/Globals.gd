@@ -1,6 +1,6 @@
 extends Node
 
-const DEBUG: bool = true
+const DEBUG: bool = false
 
 var WORLD_BOUNDARY: Rect2
 var NO_TUTORIAL: bool = false
