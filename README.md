@@ -1,5 +1,5 @@
 # Close Encounters of the Jeff Kind
-Lila-Pause GameJam event on Ludum Dare 53.
+A bullet hell game submitted on Ludum Dare 53.
 
 A bullet hell where players take on the role of Jeff, the last remaining packet deliverer for the human resistance in an alien invasion. As Jeff navigates through a barrage of alien attacks, players must collect and deliver important packets before time runs out.
 
